@@ -89,6 +89,9 @@ a { color: var(--green); }
 .row .ico { color: var(--green-mid); display: flex; }
 .row.disabled { color: #8A948D; }
 .row.disabled .ico { color: #A9B1AB; }
+.switch { width: 50px; height: 30px; border-radius: 15px; padding: 3px; background: #CFC8B8; display: flex; flex-shrink: 0; }
+.switch span { width: 24px; height: 24px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.25); }
+.switch.on { background: var(--green); justify-content: flex-end; }
 .tag-soon { font-size: 12px; font-weight: 800; color: var(--muted); background: var(--line-soft); padding: 3px 8px; border-radius: 10px; white-space: nowrap; }
 
 .foot { display: flex; gap: 10px; margin-top: auto; padding-top: 16px; }
@@ -144,6 +147,180 @@ a { color: var(--green); }
 
 .toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(24px + env(safe-area-inset-bottom, 0px)); max-width: min(92vw, 520px); background: var(--text); color: #fff; padding: 12px 18px; border-radius: 14px; font-size: 15px; font-weight: 700; z-index: 30; box-shadow: 0 6px 20px rgba(35, 48, 42, 0.25); }
 
+
+/* Appel */
+.week-nav { display: flex; align-items: center; gap: 8px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 4px; }
+.icon-plain { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--green); text-decoration: none; flex-shrink: 0; }
+.week-label { flex: 1; display: flex; flex-direction: column; align-items: center; }
+.week-day { font-size: 16px; font-weight: 800; }
+.week-num { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+.dot-red { width: 10px; height: 10px; border-radius: 50%; background: var(--red); display: inline-block; }
+.att-table { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.att-head { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 2; display: flex; align-items: center; gap: 6px; padding: 10px 12px 10px 16px; background: #EEF3EC; border-bottom: 1px solid var(--line); border-radius: var(--radius) var(--radius) 0 0; font-size: 12px; font-weight: 800; color: var(--muted); }
+.att-col { width: 48px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 1px; }
+.att-col b { font-size: 14px; color: var(--text); }
+.att-row { display: flex; align-items: center; gap: 6px; padding: 10px 12px 10px 16px; border-bottom: 1px solid var(--line-soft); }
+.att-row:last-child { border-bottom: none; }
+.att-name { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.att-n { font-size: 16px; font-weight: 800; display: flex; align-items: center; gap: 6px; overflow-wrap: anywhere; }
+.att-sub { font-size: 12px; color: var(--muted); }
+.att-sub.red { color: var(--red-text); font-weight: 700; }
+.bang { width: 20px; height: 20px; border-radius: 50%; background: var(--red); color: #fff; font-size: 12px; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.mk { width: 48px; height: 44px; flex-shrink: 0; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--muted); font-size: 17px; font-weight: 800; }
+.mk.on[data-v="P"] { background: #2F5D45; border-color: #2F5D45; color: #fff; }
+.mk.on[data-v="A"] { background: #C0392B; border-color: #C0392B; color: #fff; }
+.mk.on[data-v="J"] { background: #2F5873; border-color: #2F5873; color: #fff; }
+.mk.on[data-v="R"] { background: #A35A12; border-color: #A35A12; color: #fff; }
+.sticky-foot { position: sticky; bottom: 0; padding: 12px 0 calc(8px + env(safe-area-inset-bottom, 0px)); background: linear-gradient(to bottom, rgba(246,243,236,0), var(--bg) 30%); }
+.vac-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(72px, 1fr)); gap: 6px; }
+.vac { height: 54px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--text); display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 12px; }
+.vac b { font-size: 14px; }
+.vac.on { background: #CFC8B8; border-color: #B9B2A3; }
+@media (max-width: 360px) { .mk, .att-col { width: 42px; } .att-row, .att-head { padding-left: 10px; padding-right: 8px; gap: 4px; } }
+
+/* Étapes 3 à 6 */
+.stack { display: flex; flex-direction: column; gap: 10px; }
+.arrow { border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.lesson-card { display: flex; flex-direction: column; gap: 6px; padding: 12px 16px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); color: var(--text); text-decoration: none; }
+.lesson-top { display: flex; align-items: center; gap: 8px; }
+.lesson-n { font-size: 16px; font-weight: 800; color: var(--green); }
+.lesson-ar { font-size: 21px; line-height: 1.5; text-align: right; }
+.lesson-title { font-size: 21px; line-height: 1.5; text-align: right; }
+.pill-amber { height: 24px; padding: 0 9px; border-radius: 12px; background: var(--amber-bg); border: 1px solid #EED9A4; color: var(--amber-text); font-size: 12px; font-weight: 800; display: inline-flex; align-items: center; white-space: nowrap; }
+.pill-green { height: 24px; padding: 0 9px; border-radius: 12px; background: var(--tint); color: var(--green); font-size: 12px; font-weight: 800; display: inline-flex; align-items: center; }
+.other-level { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.other-level summary { min-height: 52px; padding: 14px 16px; font-weight: 700; cursor: pointer; }
+.other-level .stack { padding: 0 12px 12px; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 13px; font-weight: 700; color: var(--muted); }
+.banner.blue { background: #E6EEF4; color: #24485F; }
+.ev-head .ev-col { width: 44px; flex-shrink: 0; text-align: center; font-size: 12px; }
+.ev-head .notes-col { width: 46px; color: var(--amber-text); }
+.ev-row { display: flex; align-items: center; gap: 4px; padding: 8px 8px 8px 12px; border-bottom: 1px solid var(--line-soft); }
+.ev-row:last-child { border-bottom: none; }
+.ev-name { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 3px; }
+.ev-n { display: flex; align-items: center; gap: 5px; font-size: 15px; font-weight: 800; overflow-wrap: anywhere; }
+.cell { width: 44px; height: 44px; flex-shrink: 0; border-radius: 10px; font-size: 13px; font-weight: 800; background: var(--bg); color: var(--muted); border: 1.5px dashed #CFC8B8; }
+.cell.v2 { background: #2F7D4F; color: #fff; border: 1px solid #2F7D4F; }
+.cell.v1 { background: #F2C94C; color: #4A3A08; border: 1px solid #E0B43A; }
+.cell.v0 { background: #C0392B; color: #fff; border: 1px solid #C0392B; }
+.cell.pref { opacity: 0.78; }
+.absent-cells { width: 188px; flex-shrink: 0; text-align: center; font-size: 13px; color: var(--muted); }
+.mini { height: 30px; padding: 0 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--green); font-size: 13px; font-weight: 800; display: inline-flex; align-items: center; gap: 4px; }
+.mini.green { border-color: #9CC3A6; background: var(--tint); }
+.mini.solid { background: var(--green); color: #fff; border-color: var(--green); }
+.mini.amber { background: var(--amber-bg); border-color: #E2C98A; color: var(--amber-text); }
+.ev-name .mini { height: 26px; font-size: 12px; padding: 0 8px; border-color: #2F7D4F; color: #2F7D4F; }
+.ev-name .mini.green { border-color: #9CC3A6; color: var(--green); }
+.notes-btn { width: 46px; height: 44px; flex-shrink: 0; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--muted); font-size: 14px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 3px; }
+.notes-btn.has { background: var(--amber-bg); border-color: #E2C98A; color: var(--amber-text); }
+.saved-line { margin: 0 0 8px; text-align: center; font-size: 13px; font-weight: 700; color: var(--green); }
+.row-flex { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.sub-label { font-size: 13px; font-weight: 800; color: var(--muted); margin-top: 6px; }
+.sub-label.amber { color: var(--amber-text); }
+.sub-label.red { color: var(--red-text); }
+.sub-label.green { color: var(--green); }
+.note { display: flex; flex-direction: column; gap: 8px; padding: 10px 12px; border-radius: 12px; background: var(--amber-bg); border: 1px solid #EED9A4; }
+.note.done { background: #F1EFE8; border-color: var(--line); }
+.note.done .note-text span:last-child { text-decoration: line-through; color: #6B746E; }
+.note-text { display: flex; flex-direction: column; font-size: 15px; }
+.note-meta { font-size: 12px; font-weight: 700; color: var(--muted); }
+.note-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+.comp-head.open { background: #FBF9F3; }
+.comp-item { border-bottom: 1px solid var(--line-soft); }
+.comp-item:last-child { border-bottom: none; }
+.comp-item .row { border-bottom: none; }
+.comp-panel { padding: 4px 16px 16px; display: flex; flex-direction: column; gap: 6px; background: #FBF9F3; }
+.chk { display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 6px 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); text-align: left; font-size: 15px; font-weight: 700; }
+.chk .box { width: 22px; height: 22px; border-radius: 6px; border: 1.5px solid #B9B2A3; background: var(--surface); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.chk .box svg { visibility: hidden; }
+.chk.on .box svg { visibility: visible; }
+.chk.neg.on { background: var(--red-bg); border-color: var(--red-line); color: #7A2219; }
+.chk.neg.on .box { background: var(--red); border-color: var(--red); }
+.chk.pos.on { background: var(--tint); border-color: #9CC3A6; color: #1F4231; }
+.chk.pos.on .box { background: #2F7D4F; border-color: #2F7D4F; }
+.tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; padding: 4px; border-radius: 14px; background: var(--line-soft); }
+.tab { height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; color: #3E4A43; text-decoration: none; }
+.tab.on { background: var(--green); color: #fff; }
+.frise { display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap; }
+.frise.many { gap: 4px; }
+.frise-item { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 11px; font-weight: 700; color: var(--muted); }
+.progress { display: flex; gap: 4px; height: 14px; }
+.prog-group { display: flex; gap: 2px; }
+.prog-group span { flex: 1; border-radius: 3px; background: var(--line); }
+.prog-group span.done { background: var(--green-soft); }
+.prog-group span.cur { background: var(--green); box-shadow: 0 0 0 2px #F2C94C; }
+.prog-labels { display: flex; gap: 4px; font-size: 12px; font-weight: 700; color: var(--muted); }
+.prog-labels span:nth-child(2) { text-align: center; }
+.prog-labels span:last-child { text-align: right; }
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.three { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.card.small { padding: 12px 14px; gap: 6px; border-radius: var(--radius); }
+.card.amber { background: var(--amber-bg); border-color: #EED9A4; gap: 6px; color: #3E3215; }
+.card.blue { background: #E6EEF4; border-color: #C5D6E2; gap: 10px; }
+.big-num { font-size: 22px; font-weight: 800; }
+.prop { display: flex; flex-direction: column; gap: 8px; padding: 12px; border-radius: 12px; background: var(--surface); }
+.dist-row { display: flex; align-items: center; gap: 10px; min-height: 32px; color: var(--text); text-decoration: none; }
+.dist-l { width: 66px; font-size: 14px; font-weight: 800; flex-shrink: 0; }
+.dist-bar { flex: 1; height: 18px; border-radius: 6px; background: #F1EFE8; overflow: hidden; display: flex; }
+.dist-bar span { height: 100%; border-radius: 6px; }
+.dist-c { width: 64px; text-align: right; font-size: 13px; font-weight: 700; color: #3E4A43; flex-shrink: 0; }
+.steps { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; line-height: 1.45; }
+@media (max-width: 370px) { .three { grid-template-columns: repeat(2, minmax(0, 1fr)); } .two { grid-template-columns: 1fr; } .cell, .ev-head .ev-col { width: 40px; } }
+
+/* Code PIN et guide */
+.pin-screen { position: fixed; inset: 0; z-index: 40; background: var(--bg); display: flex; align-items: center; justify-content: center; padding: calc(20px + env(safe-area-inset-top, 0px)) 20px calc(20px + env(safe-area-inset-bottom, 0px)); overflow-y: auto; }
+.pin-box { width: 100%; max-width: 360px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.pin-box.guide { align-items: stretch; background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 24px; gap: 14px; }
+.guide-step { font-size: 13px; font-weight: 800; color: var(--muted); }
+.guide-dots { display: flex; gap: 6px; justify-content: center; }
+.guide-dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--line); }
+.guide-dots span.on { background: var(--green); width: 20px; border-radius: 4px; }
+.pin-dots { display: flex; gap: 14px; margin-top: 8px; }
+.pin-dot { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--green); }
+.pin-dot.on { background: var(--green); }
+.pin-pad { display: grid; grid-template-columns: repeat(3, 72px); gap: 12px; }
+.pin-key { width: 72px; height: 64px; border-radius: 16px; border: 1px solid var(--line); background: var(--surface); font-size: 24px; font-weight: 800; color: var(--text); }
+
+/* Pages PDF (hors écran) */
+.pp-host { position: fixed; left: -12000px; top: 0; }
+.pp { width: 794px; height: 1123px; background: #fff; color: #23302A; font-family: 'Nunito', 'Segoe UI', sans-serif; }
+.pp-body { height: 100%; box-sizing: border-box; padding: 44px 54px 30px; display: flex; flex-direction: column; gap: 16px; font-size: 15px; }
+.pp-head { display: flex; align-items: center; gap: 16px; padding-bottom: 14px; border-bottom: 3px solid #2F5D45; }
+.pp-logo { width: 70px; height: 70px; border-radius: 14px; object-fit: cover; border: 1px solid #E2DDD0; }
+.pp-kicker { font-size: 15px; font-weight: 700; color: #4E6B58; }
+.pp-title { font-size: 30px; font-weight: 800; color: #2F5D45; }
+.pp-right { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; font-size: 14px; color: #3E4A43; }
+.pp-stats { display: flex; gap: 12px; }
+.pp-stats > div { flex: 1; padding: 12px 16px; border-radius: 12px; background: #F6F3EC; display: flex; flex-direction: column; gap: 2px; }
+.pp-stats > div span { font-size: 13px; font-weight: 800; color: #56645B; }
+.pp-stats > div b { font-size: 26px; }
+.pp-stats .red { background: #FCEDEA; } .pp-stats .red span { color: #9B2C21; }
+.pp-stats .green { background: #E3EEE5; } .pp-stats .green span { color: #2F5D45; }
+.pp-sec { font-size: 16px; font-weight: 800; margin-top: 4px; }
+.pp-sec.red { color: #9B2C21; } .pp-sec.green { color: #2F5D45; }
+.pp-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.pp-table th { background: #F6F3EC; text-align: left; padding: 9px 12px; font-weight: 800; }
+.pp-table td { padding: 9px 12px; border-bottom: 1px solid #E2DDD0; vertical-align: top; line-height: 1.5; }
+.pp-table.center th, .pp-table.center td { text-align: center; padding: 6px 8px; }
+.muted { color: #56645B; }
+.pp-row { display: flex; gap: 14px; }
+.pp-box { padding: 12px 16px; border-radius: 12px; background: #F6F3EC; display: flex; flex-direction: column; gap: 4px; font-size: 14px; }
+.pp-box.line { background: #fff; border: 1px solid #E2DDD0; }
+.pp-box.amber { background: #FFF4D9; color: #3E3215; }
+.pp-lab { font-size: 12px; font-weight: 800; color: #56645B; }
+.pp-big { font-size: 22px; color: #2F5D45; }
+.pp-last { display: flex; gap: 12px; }
+.pp-c { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 4px; border: 1px solid #E2DDD0; border-radius: 12px; font-size: 13px; }
+.pp-c.cur { border: 2px solid #2F5D45; }
+.pp-c span { color: #56645B; font-size: 12px; }
+.pp-phrase { padding: 12px 16px; border-radius: 12px; background: #E3EEE5; color: #1F4231; font-weight: 700; }
+.pp-v { display: inline-block; min-width: 36px; padding: 2px 0; border-radius: 6px; font-weight: 800; }
+.pp-v.v2 { background: #2F7D4F; color: #fff; } .pp-v.v1 { background: #F2C94C; color: #4A3A08; } .pp-v.v0 { background: #C0392B; color: #fff; }
+.pp-sign { display: flex; justify-content: space-between; gap: 24px; font-size: 14px; color: #3E4A43; }
+.pp-sign div { display: flex; flex-direction: column; gap: 34px; }
+.pp-sign span { width: 240px; border-top: 1px solid #8A948D; }
+.pp-foot { font-size: 12px; color: #6B746E; text-align: center; border-top: 1px solid #ECE7DB; padding-top: 10px; }
+
 @media (prefers-reduced-motion: no-preference) {
   .sheet { animation: up 0.18s ease-out; }
   @keyframes up { from { transform: translateY(24px); opacity: 0.6; } to { transform: none; opacity: 1; } }
@@ -153,6 +330,7 @@ a { color: var(--green); }
 <body>
 <div id="app"><div class="page"><p class="hint">Chargement…</p></div></div>
 <div id="layer"></div>
+<div id="pin-layer"></div>
 
 <script>
 'use strict';
@@ -162,7 +340,7 @@ a { color: var(--green); }
    Toutes les données restent sur cet appareil (IndexedDB).
    ========================================================= */
 
-const APP_VERSION = '1.0.0 · étape 1';
+const APP_VERSION = '2.0.0';
 const TRASH_DAYS = 90;
 
 const LEVELS = {
@@ -375,6 +553,7 @@ const pages = {};
 
 pages.home = async () => {
   const students = await getStudents();
+  const alertN = (await untreatedAlerts()).length;
   const next = nextSunday();
   const today = new Date().getDay() === 0;
   const when = (today ? 'aujourd\u2019hui' : fmtDay(next)) + ' · S' + isoWeek(next);
@@ -390,14 +569,17 @@ pages.home = async () => {
     (students.length === 0
       ? '<a href="#/eleves" class="banner info" style="text-decoration:none">Commencez par ajouter vos élèves : touchez ici.</a>'
       : '') +
+    (students.length && Date.now() - Math.min(...students.map((x) => x.createdAt || Date.now())) > 14 * 86400000 && (!settings.lastBackupAt || Date.now() - settings.lastBackupAt > 30 * 86400000)
+      ? '<a href="#/parametres" class="banner warn" style="text-decoration:none">Pensez à exporter une sauvegarde (Paramètres) et à la garder hors du téléphone.</a>'
+      : '') +
     '<span class="section-label">Pendant le cours</span>' +
-    '<a href="#/bientot/appel" class="big main"><span class="big-icon">' + I.appel + '</span><span class="big-text"><span class="big-title">Appel</span><span class="big-sub">Présent, absent, justifié, retard</span></span></a>' +
-    '<a href="#/bientot/evaluation" class="big"><span class="big-icon">' + I.livre + '</span><span class="big-text"><span class="big-title">Évaluation</span><span class="big-sub">4 critères par élève</span></span>' + I.chevron + '</a>' +
-    '<a href="#/bientot/comportement" class="big"><span class="big-icon">' + I.drapeau + '</span><span class="big-text"><span class="big-title">Comportement</span><span class="big-sub">Fiche de suivi du comportement</span></span>' + I.chevron + '</a>' +
+    '<a href="#/appel" class="big main"><span class="big-icon">' + I.appel + '</span><span class="big-text"><span class="big-title">Appel</span><span class="big-sub">Présent, absent, justifié, retard</span></span>' + (alertN ? '<span class="badge-alert" aria-label="' + alertN + ' alerte(s)">! ' + alertN + '</span>' : '') + '</a>' +
+    '<a href="#/evaluation" class="big"><span class="big-icon">' + I.livre + '</span><span class="big-text"><span class="big-title">Évaluation</span><span class="big-sub">Par leçon, 4 critères</span></span>' + I.chevron + '</a>' +
+    '<a href="#/comportement" class="big"><span class="big-icon">' + I.drapeau + '</span><span class="big-text"><span class="big-title">Comportement</span><span class="big-sub">Fiche de suivi du comportement</span></span>' + I.chevron + '</a>' +
     '<span class="section-label">Suivi</span>' +
     '<div class="group">' +
-      '<a href="#/bientot/bilans" class="row"><span class="ico">' + I.courbe + '</span><span class="row-main">Bilans des élèves</span></a>' +
-      '<a href="#/bientot/classe" class="row"><span class="ico">' + I.grille + '</span><span class="row-main">Vue d\u2019ensemble de la classe</span></a>' +
+      '<a href="#/bilans" class="row"><span class="ico">' + I.courbe + '</span><span class="row-main">Bilans des élèves</span></a>' +
+      '<a href="#/classe" class="row"><span class="ico">' + I.grille + '</span><span class="row-main">Vue d\u2019ensemble de la classe</span></a>' +
       '<a href="#/eleves" class="row"><span class="ico">' + I.eleves + '</span><span class="row-main">Élèves et transfert</span><span class="row-end">' + students.length + '</span></a>' +
     '</div>' +
     '<div class="foot"><a href="#/parametres">' + I.reglages + 'Paramètres</a><a href="#/aide">' + I.aide + 'Aide</a></div>' +
@@ -405,7 +587,7 @@ pages.home = async () => {
 };
 
 const SOON = {
-  appel: ['Appel', 2], evaluation: ['Évaluation', 3], comportement: ['Comportement', 4],
+  evaluation: ['Évaluation', 3], comportement: ['Comportement', 4],
   bilans: ['Bilans des élèves', 5], classe: ['Vue d\u2019ensemble de la classe', 5]
 };
 pages.bientot = async (key) => {
@@ -428,7 +610,7 @@ pages.eleves = async () => {
   return '<div class="page">' + header('Élèves', 'Classe ' + settings.level + ' · ' + students.length + ' élève' + (students.length > 1 ? 's' : '')) +
     '<div class="btn-row">' +
       '<button class="btn" data-action="add-student-open">' + I.plus + 'Ajouter</button>' +
-      '<button class="btn light" data-action="soon" data-step="6">' + I.download + 'Recevoir un élève</button>' +
+      '<button class="btn light" data-action="receive-student">' + I.download + 'Recevoir un élève</button>' +
     '</div>' +
     (students.length
       ? '<label class="search">' + I.loupe + '<input id="search" type="search" placeholder="Rechercher un élève" autocomplete="off" aria-label="Rechercher un élève"></label>' +
@@ -518,14 +700,14 @@ pages.parametres = async () => {
         '<select class="select" style="height:40px;font-weight:700" data-setting="level">' + levels + '</select></label>' +
     '</div>' +
     '<span class="section-label">Calendrier</span>' +
-    '<div class="group">' + soon('Semaines de vacances', '', 2) + '</div>' +
+    '<div class="group"><a href="#/vacances" class="row"><span class="row-main">Semaines de vacances</span>' + I.chevron + '</a></div>' +
     '<span class="section-label">Sécurité et données</span>' +
     '<div class="group">' +
       '<div class="row"><span class="row-main">Sauvegarde automatique<span class="row-sub" style="color:var(--green);font-weight:700">Activée : chaque saisie est enregistrée sur cet appareil</span></span></div>' +
       '<div class="row"><span class="row-main">Stockage protégé<span class="row-sub">' + (persisted ? 'Oui : le navigateur ne videra pas les données' : 'Non confirmé : installez l\u2019application sur l\u2019écran d\u2019accueil') + '</span></span></div>' +
-      soon('Code PIN', 'Demande un code à l\u2019ouverture', 6) +
-      soon('Exporter une sauvegarde', 'Fichier à garder hors du téléphone', 6) +
-      soon('Restaurer une sauvegarde', '', 6) +
+      '<button class="row" data-action="' + (settings.pinHash ? 'pin-off' : 'pin-on') + '"><span class="row-main">Code PIN<span class="row-sub">Demande un code à 4 chiffres à l\u2019ouverture</span></span><span class="switch' + (settings.pinHash ? ' on' : '') + '" aria-hidden="true"><span></span></span></button>' +
+      '<button class="row" data-action="backup-export"><span class="row-main">Exporter une sauvegarde<span class="row-sub">' + (settings.lastBackupAt ? 'Dernière : ' + esc(fmtDate(settings.lastBackupAt)) : 'Jamais faite · à garder hors du téléphone') + '</span></span><span class="ico">' + I.download + '</span></button>' +
+      '<button class="row" data-action="backup-restore"><span class="row-main">Restaurer une sauvegarde<span class="row-sub">Remplace les données de ce téléphone</span></span><span class="ico">' + I.upload + '</span></button>' +
     '</div>' +
     '<div class="group">' +
       '<a href="#/corbeille" class="row"><span class="row-main">Corbeille</span><span class="row-end">' + trash.length + ' élément' + (trash.length > 1 ? 's' : '') + '</span>' + I.chevron + '</a>' +
@@ -533,7 +715,7 @@ pages.parametres = async () => {
     '</div>' +
     '<span class="section-label">Aide</span>' +
     '<div class="group">' +
-      soon('Guide de démarrage', '', 6) +
+      '<button class="row" data-action="guide-open"><span class="row-main">Revoir le guide de démarrage</span>' + I.chevron + '</button>' +
       '<a href="#/aide" class="row"><span class="row-main">Installer sur iPhone / Android</span>' + I.chevron + '</a>' +
       '<a href="#/diagnostic" class="row"><span class="row-main">Diagnostic</span><span class="row-end">v' + esc(APP_VERSION) + '</span>' + I.chevron + '</a>' +
     '</div>' +
@@ -624,24 +806,27 @@ pages.aide = async () => {
     '<div class="card"><span class="field-label">Sur PC (Chrome ou Edge)</span>' +
       '<p style="margin:0">Cliquez sur l\u2019icône d\u2019installation à droite de la barre d\u2019adresse, puis sur <b>Installer</b>.</p></div>' +
     '<p class="hint">Une fois installée, l\u2019application fonctionne sans Wi-Fi. Vos données restent uniquement sur cet appareil.</p>' +
+    '<button class="btn light full" data-action="guide-open">Revoir le guide de démarrage</button>' +
   '</div>';
 };
 
 /* =========================================================
    Navigation
    ========================================================= */
-async function route() {
+async function route(keepScroll) {
   const hash = location.hash.replace(/^#\/?/, '');
-  const [name, param] = hash.split('/');
+  const [name, ...params] = hash.split('/');
   const page = pages[name || 'home'] || pages.home;
   closeSheet();
   try {
-    $('#app').innerHTML = await page(param);
+    const html = await page(...params);
+    $('#app').innerHTML = html;
   } catch (e) {
     logError('Affichage ' + (name || 'accueil') + ' : ' + e.message);
     $('#app').innerHTML = '<div class="page">' + header('Erreur') + '<div class="banner err">Cette page n\u2019a pas pu s\u2019afficher. Le problème est noté dans Paramètres › Diagnostic.</div><a class="btn" href="#/">Retour à l\u2019accueil</a></div>';
   }
-  window.scrollTo(0, 0);
+  if (keepScroll !== true) window.scrollTo(0, 0);
+  if (!name) maybeAskAlerts().catch((e) => logError('Alertes : ' + e.message));
 }
 window.addEventListener('hashchange', route);
 
@@ -676,8 +861,8 @@ const actions = {
       studentForm(s) +
       '<button class="btn full" data-action="edit-student" data-id="' + esc(s.id) + '">Enregistrer les changements</button>' +
       '<div class="group">' +
-        '<button class="row disabled" data-action="soon" data-step="5"><span class="ico">' + I.courbe + '</span><span class="row-main">Voir le bilan</span><span class="tag-soon">Étape 5</span></button>' +
-        '<button class="row disabled" data-action="soon" data-step="6"><span class="ico">' + I.transfert + '</span><span class="row-main">Transférer à un collègue</span><span class="tag-soon">Étape 6</span></button>' +
+        '<a class="row" href="#/bilan/' + encodeURIComponent(s.id) + '/w4"><span class="ico">' + I.courbe + '</span><span class="row-main">Voir le bilan</span>' + I.chevron + '</a>' +
+        '<button class="row" data-action="transfer-start" data-id="' + esc(s.id) + '"><span class="ico">' + I.transfert + '</span><span class="row-main">Transférer à un collègue</span>' + I.chevron + '</button>' +
       '</div>' +
       '<button class="btn danger-soft full" data-action="delete-student" data-id="' + esc(s.id) + '">' + I.corbeille + 'Supprimer l\u2019élève</button>');
   },
@@ -767,6 +952,1268 @@ const actions = {
   }
 };
 
+/* =========================================================
+   Étape 2 — Appel, alertes d'absences, semaines de vacances
+   ========================================================= */
+const MARKS = {
+  P: { label: 'Présent', short: '✓' },
+  A: { label: 'Absent', short: '✗' },
+  J: { label: 'Absent justifié', short: 'J' },
+  R: { label: 'Retard', short: 'R' }
+};
+const ABS_LIMIT = 3;
+
+const pad2 = (n) => String(n).padStart(2, '0');
+const toKey = (d) => d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+const fromKey = (k) => { const [y, m, d] = k.split('-').map(Number); return new Date(y, m - 1, d, 12); };
+function lastSunday(from) {
+  const d = new Date(from || Date.now());
+  d.setHours(12, 0, 0, 0);
+  d.setDate(d.getDate() - d.getDay());
+  return d;
+}
+function addDays(key, n) { const d = fromKey(key); d.setDate(d.getDate() + n); return toKey(d); }
+function schoolYearStartKey(ref) {
+  const d = ref ? fromKey(ref) : new Date();
+  const y = d.getMonth() >= 8 ? d.getFullYear() : d.getFullYear() - 1;
+  return y + '-09-01';
+}
+const fmtShort = (key) => fromKey(key).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
+
+async function getSession(key) {
+  return (await dbGet('attendance', key)) || { id: key, marks: {}, vacation: false, validated: false };
+}
+async function saveSession(s) { s.updatedAt = Date.now(); await dbPut('attendance', s); }
+
+/* Nombre d'absences non justifiées depuis la rentrée (1er septembre), vacances exclues. */
+async function absenceCounts() {
+  const start = schoolYearStartKey();
+  const counts = {};
+  (await dbAll('attendance')).forEach((s) => {
+    if (s.id < start || s.vacation) return;
+    Object.keys(s.marks || {}).forEach((sid) => { if (s.marks[sid] === 'A') counts[sid] = (counts[sid] || 0) + 1; });
+  });
+  return counts;
+}
+
+async function getAlerts() { return (await dbGet('kv', 'alerts')) || {}; }
+async function checkAlerts(currentKey) {
+  const [counts, alerts, students] = await Promise.all([absenceCounts(), getAlerts(), getStudents()]);
+  let changed = false;
+  const fresh = [];
+  students.forEach((st) => {
+    const n = counts[st.id] || 0;
+    const a = alerts[st.id];
+    if (n >= ABS_LIMIT && !a) {
+      alerts[st.id] = { reachedAt: currentKey || toKey(new Date()), treated: false, year: schoolYearStartKey() };
+      changed = true;
+      fresh.push(st.name);
+    } else if (a && n < ABS_LIMIT && !a.treated) {
+      delete alerts[st.id];
+      changed = true;
+    }
+  });
+  if (changed) await dbPut('kv', alerts, 'alerts');
+  for (const name of fresh) await addHistory('Alerte : ' + name + ' a atteint ' + ABS_LIMIT + ' absences non justifiées');
+  return alerts;
+}
+async function untreatedAlerts() {
+  const [alerts, students] = await Promise.all([getAlerts(), getStudents()]);
+  const year = schoolYearStartKey();
+  return students.filter((s) => alerts[s.id] && !alerts[s.id].treated && alerts[s.id].year === year)
+    .map((s) => ({ id: s.id, name: s.name, at: alerts[s.id].reachedAt }));
+}
+
+/* ----- Page Appel ----- */
+pages.appel = async (param) => {
+  const today = new Date();
+  const defKey = toKey(lastSunday(today));
+  const maxKey = toKey(nextSunday(today));
+  const key = /^\d{4}-\d{2}-\d{2}$/.test(param || '') && fromKey(param).getDay() === 0 ? param : defKey;
+  const [session, students, counts, alertsList] = await Promise.all([getSession(key), getStudents(), absenceCounts(), untreatedAlerts()]);
+  const d = fromKey(key);
+  const weekDot = alertsList.some((a) => a.at === key);
+  const nav =
+    '<div class="week-nav">' +
+      '<a class="icon-plain" href="#/appel/' + addDays(key, -7) + '" aria-label="Dimanche précédent">' + I.back + '</a>' +
+      '<div class="week-label"><span class="week-day">' + esc(cap(fmtDay(d))) + '</span>' +
+        '<span class="week-num">Semaine S' + isoWeek(d) + (key === toKey(lastSunday(today)) && today.getDay() === 0 ? ' · aujourd\u2019hui' : '') +
+        (weekDot ? ' <span class="dot-red" aria-label="Alerte d\u2019absences cette semaine"></span>' : '') + '</span></div>' +
+      (key < maxKey
+        ? '<a class="icon-plain" href="#/appel/' + addDays(key, 7) + '" aria-label="Dimanche suivant" style="transform:scaleX(-1)">' + I.back + '</a>'
+        : '<span class="icon-plain" aria-hidden="true"></span>') +
+    '</div>';
+
+  if (!students.length) {
+    return '<div class="page">' + header('Appel', 'Classe ' + settings.level) + nav +
+      '<div class="empty"><span style="font-size:17px;font-weight:800;color:var(--text)">Aucun élève dans la classe</span><span>Ajoutez d\u2019abord vos élèves pour pouvoir faire l\u2019appel.</span><a class="btn" href="#/eleves">Ajouter des élèves</a></div></div>';
+  }
+  if (session.vacation) {
+    return '<div class="page">' + header('Appel', 'Classe ' + settings.level) + nav +
+      '<div class="banner warn">Ce dimanche est marqué comme <b>semaine de vacances</b> : pas d\u2019appel, et il ne compte pas dans les bilans.</div>' +
+      '<button class="btn light full" data-action="toggle-vacation" data-key="' + key + '">Ce n\u2019était pas des vacances</button></div>';
+  }
+
+  const tally = { P: 0, A: 0, J: 0, R: 0 };
+  students.forEach((s) => { const m = session.marks[s.id]; if (tally[m] !== undefined) tally[m]++; });
+  const rows = students.map((s) => {
+    const m = session.marks[s.id];
+    const n = counts[s.id] || 0;
+    const alert = n >= ABS_LIMIT;
+    const btns = ['P', 'A', 'J', 'R'].map((v) =>
+      '<button class="mk' + (m === v ? ' on' : '') + '" data-v="' + v + '" data-action="mark" data-sid="' + esc(s.id) + '" data-key="' + key + '" aria-pressed="' + (m === v) + '" aria-label="' + MARKS[v].label + ' : ' + esc(s.name) + '">' + MARKS[v].short + '</button>').join('');
+    return '<div class="att-row" data-name="' + esc(norm(s.name)) + '" data-row="' + esc(s.id) + '">' +
+      '<div class="att-name"><span class="att-n">' + esc(s.name) + (alert ? ' <span class="bang" aria-label="Alerte">!</span>' : '') + '</span>' +
+        '<span class="att-sub' + (alert ? ' red' : '') + '" data-sub="' + esc(s.id) + '">' + (n ? n + ' absence' + (n > 1 ? 's' : '') + ' cette année' : '') + '</span></div>' +
+      btns + '</div>';
+  }).join('');
+  const missing = students.filter((s) => !session.marks[s.id]).length;
+
+  return '<div class="page appel-page">' + header('Appel', 'Classe ' + settings.level) + nav +
+    (alertsList.length ? '<button class="banner err" style="border:none;text-align:left;display:flex;align-items:center;gap:10px" data-action="open-alerts"><span class="bang">!</span><span style="flex:1">' +
+      esc(alertsList.map((a) => a.name).join(', ')) + ' : ' + ABS_LIMIT + ' absences non justifiées. Alerte à traiter.</span><span style="text-decoration:underline">Traiter</span></button>' : '') +
+    '<label class="search">' + I.loupe + '<input id="search-appel" type="search" placeholder="Rechercher un élève" autocomplete="off" aria-label="Rechercher un élève"></label>' +
+    '<button class="btn light full" data-action="all-present" data-key="' + key + '">' + I.appel + 'Tout le monde présent</button>' +
+    '<div class="att-table">' +
+      '<div class="att-head"><span class="att-name">Élève</span>' +
+        '<span class="att-col" style="color:#2F5D45">Présent<b id="t-P">' + tally.P + '</b></span>' +
+        '<span class="att-col" style="color:#9B2C21">Absent<b id="t-A">' + tally.A + '</b></span>' +
+        '<span class="att-col" style="color:#2F5873">Justifié<b id="t-J">' + tally.J + '</b></span>' +
+        '<span class="att-col" style="color:#8A4E14">Retard<b id="t-R">' + tally.R + '</b></span></div>' +
+      rows +
+    '</div>' +
+    '<p class="hint" id="no-result" hidden style="text-align:center">Aucun élève ne correspond à cette recherche.</p>' +
+    '<button class="btn ghost full" style="border:none;text-decoration:underline" data-action="toggle-vacation" data-key="' + key + '">Marquer ce dimanche comme vacances</button>' +
+    '<div class="sticky-foot"><button class="btn full" data-action="validate-appel" data-key="' + key + '" id="validate-btn">' + validateLabel(missing, session.validated) + '</button></div>' +
+  '</div>';
+};
+function validateLabel(missing, validated) {
+  if (missing > 0) return 'Valider l\u2019appel (' + missing + ' non saisi' + (missing > 1 ? 's' : '') + ')';
+  return validated ? 'Appel validé ✓ · revenir à l\u2019accueil' : 'Valider l\u2019appel';
+}
+
+async function refreshAppelCounts(key) {
+  const [session, students, counts] = await Promise.all([getSession(key), getStudents(), absenceCounts()]);
+  const tally = { P: 0, A: 0, J: 0, R: 0 };
+  students.forEach((s) => {
+    const m = session.marks[s.id];
+    if (tally[m] !== undefined) tally[m]++;
+    const row = document.querySelector('[data-row="' + CSS.escape(s.id) + '"]');
+    if (row) {
+      row.querySelectorAll('.mk').forEach((b) => { const on = b.dataset.v === m; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); });
+      const n = counts[s.id] || 0;
+      const sub = row.querySelector('[data-sub]');
+      if (sub) { sub.textContent = n ? n + ' absence' + (n > 1 ? 's' : '') + ' cette année' : ''; sub.classList.toggle('red', n >= ABS_LIMIT); }
+      const nameEl = row.querySelector('.att-n');
+      if (nameEl) nameEl.innerHTML = esc(s.name) + (n >= ABS_LIMIT ? ' <span class="bang" aria-label="Alerte">!</span>' : '');
+    }
+  });
+  Object.keys(tally).forEach((k) => { const el = document.getElementById('t-' + k); if (el) el.textContent = tally[k]; });
+  const btn = document.getElementById('validate-btn');
+  if (btn) btn.textContent = validateLabel(students.filter((s) => !session.marks[s.id]).length, session.validated);
+}
+
+/* ----- Semaines de vacances ----- */
+pages.vacances = async () => {
+  const start = fromKey(schoolYearStartKey());
+  let d = new Date(start); d.setDate(d.getDate() + ((7 - d.getDay()) % 7));
+  const end = fromKey(addDays(toKey(nextSunday()), 7 * 12));
+  const sessions = {};
+  (await dbAll('attendance')).forEach((s) => { sessions[s.id] = s; });
+  let html = '';
+  let month = '';
+  while (d <= end) {
+    const key = toKey(d);
+    const m = d.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' });
+    if (m !== month) { if (month) html += '</div>'; html += '<span class="section-label">' + esc(cap(m)) + '</span><div class="vac-grid">'; month = m; }
+    const on = sessions[key] && sessions[key].vacation;
+    html += '<button class="vac' + (on ? ' on' : '') + '" data-action="toggle-vacation" data-key="' + key + '" data-stay="1" aria-pressed="' + !!on + '">' +
+      '<b>S' + isoWeek(d) + '</b><span>' + d.getDate() + ' ' + esc(d.toLocaleDateString('fr-FR', { month: 'short' })) + '</span></button>';
+    d.setDate(d.getDate() + 7);
+  }
+  if (month) html += '</div>';
+  return '<div class="page">' + header('Semaines de vacances', 'Touchez un dimanche pour le marquer', '#/parametres') +
+    '<p class="hint" style="margin:0">Les dimanches en gris sont des vacances : pas d\u2019appel, et ils ne comptent pas dans les bilans.</p>' + html + '</div>';
+};
+
+/* ----- Fenêtre d'alerte à l'ouverture ----- */
+let alertsAsked = false;
+async function maybeAskAlerts() {
+  if (alertsAsked) return;
+  const list = await untreatedAlerts();
+  if (!list.length) return;
+  alertsAsked = true;
+  openSheet('Alerte absences',
+    '<p style="margin:0;font-size:15px;line-height:1.45">Ces élèves ont atteint <b>' + ABS_LIMIT + ' absences non justifiées</b> cette année. Avez-vous traité l\u2019alerte (parents prévenus) ?</p>' +
+    '<div class="group">' + list.map((a) =>
+      '<div class="row"><span class="bang">!</span><span class="row-main">' + esc(a.name) + '<span class="row-sub">Depuis le ' + esc(fmtShort(a.at)) + '</span></span>' +
+      '<button class="btn" style="height:40px;font-size:14px;padding:0 14px" data-action="treat-alert" data-sid="' + esc(a.id) + '">Traité</button></div>').join('') + '</div>' +
+    '<button class="btn ghost full" data-action="close-sheet">Plus tard</button>');
+}
+
+Object.assign(actions, {
+  'open-alerts': async () => { alertsAsked = false; await maybeAskAlerts(); },
+  mark: async (el) => {
+    const key = el.dataset.key;
+    const sid = el.dataset.sid;
+    const v = el.dataset.v;
+    const s = await getSession(key);
+    const old = s.marks[sid];
+    if (old === v) return;
+    s.marks[sid] = v;
+    s.vacation = false;
+    await saveSession(s);
+    if (old) {
+      const st = await dbGet('students', sid);
+      await addHistory('Appel du ' + fmtShort(key) + ' · ' + (st ? st.name : 'élève') + ' : ' + MARKS[old].label + ' → ' + MARKS[v].label);
+    }
+    if (old === 'A' || v === 'A') {
+      const before = (await untreatedAlerts()).length;
+      await checkAlerts(key);
+      if ((await untreatedAlerts()).length !== before) { await route(true); return; }
+    }
+    await refreshAppelCounts(key);
+  },
+  'all-present': async (el) => {
+    const key = el.dataset.key;
+    const [s, students] = await Promise.all([getSession(key), getStudents()]);
+    const todo = students.filter((st) => !s.marks[st.id]);
+    if (!todo.length) { toast('Tous les élèves ont déjà une saisie. Touchez une case pour la changer.'); return; }
+    todo.forEach((st) => { s.marks[st.id] = 'P'; });
+    await saveSession(s);
+    await refreshAppelCounts(key);
+    toast(todo.length + ' élève' + (todo.length > 1 ? 's marqués présents.' : ' marqué présent.'));
+  },
+  'toggle-vacation': async (el) => {
+    const key = el.dataset.key;
+    const s = await getSession(key);
+    if (!s.vacation && Object.keys(s.marks).length) {
+      const ok = await confirmBox('Marquer comme vacances ?', 'Un appel a déjà été saisi pour le ' + esc(fmtShort(key)) + '. Il sera conservé mais ne comptera plus dans les absences ni dans les bilans.', 'Marquer comme vacances', false);
+      if (!ok) return;
+    }
+    s.vacation = !s.vacation;
+    await saveSession(s);
+    await checkAlerts(key);
+    await addHistory((s.vacation ? 'Vacances : ' : 'Fin de vacances : ') + 'dimanche ' + fmtShort(key));
+    toast(s.vacation ? 'Dimanche marqué comme vacances.' : 'Dimanche remis en cours normal.');
+    route(true);
+  },
+  'validate-appel': async (el) => {
+    const key = el.dataset.key;
+    const [s, students] = await Promise.all([getSession(key), getStudents()]);
+    const missing = students.filter((st) => !s.marks[st.id]);
+    if (missing.length) {
+      const ok = await confirmBox('Élèves sans saisie', missing.length === 1
+        ? '<b>' + esc(missing[0].name) + '</b> n\u2019a pas encore de saisie. Valider quand même ?'
+        : missing.length + ' élèves n\u2019ont pas encore de saisie. Valider quand même ?', 'Valider quand même', false);
+      if (!ok) return;
+    }
+    const first = !s.validated;
+    s.validated = true;
+    await saveSession(s);
+    await checkAlerts(key);
+    if (first) await addHistory('Appel du ' + fmtShort(key) + ' validé');
+    toast('Appel enregistré.');
+    alertsAsked = false;
+    location.hash = '#/';
+  },
+  'treat-alert': async (el) => {
+    const alerts = await getAlerts();
+    const a = alerts[el.dataset.sid];
+    if (!a) return;
+    a.treated = true;
+    a.treatedAt = Date.now();
+    await dbPut('kv', alerts, 'alerts');
+    const st = await dbGet('students', el.dataset.sid);
+    await addHistory('Alerte d\u2019absences traitée : ' + (st ? st.name : 'élève'));
+    const row = el.closest('.row');
+    if (row) row.remove();
+    if (!document.querySelector('#layer [data-action="treat-alert"]')) closeSheet();
+    toast('Alerte marquée comme traitée.');
+    if (!location.hash || location.hash === '#/') route(true);
+  }
+});
+
+/* =========================================================
+   Étapes 3 à 6 — Évaluation, comportement, bilans, classe,
+   PDF, transfert, sauvegarde, code PIN, guide
+   ========================================================= */
+const CRITERIA = ['Reconnaissance des lettres', 'Prononciation (makhârij)', 'Application de la règle', 'Fluidité de lecture'];
+const CRIT_SHORT = ['Lettres', 'Pron.', 'Règle', 'Fluid.'];
+const VAL = { 2: { t: 'A', label: 'Acquis' }, 1: { t: 'EC', label: 'En cours' }, 0: { t: 'NA', label: 'Non acquis' } };
+const NEXT_VAL = (v) => (v === null || v === undefined ? 2 : v === 2 ? 1 : v === 1 ? 0 : null);
+const NEG = ['Bagarre ou geste violent', 'Manque de respect envers un professeur', 'Manque de respect envers un camarade', 'Langage grossier', 'Dégradation du matériel ou du livre', 'Perturbation du cours (chahut, bruit)', 'Utilisation du téléphone', 'Devoirs non faits', 'Inattention répétée', 'Oubli des affaires'];
+const POS = ['Très bonne participation', 'Aide un camarade', 'Progrès remarquable'];
+const LEVEL_ORDER = ['Débutant', 'Moyen', 'Avancé'];
+
+const refKey = () => toKey(lastSunday(new Date()));
+/* Dernier dimanche avec des données (au plus le prochain dimanche), pour les bilans. */
+async function reportRef() {
+  const base = refKey();
+  const max = toKey(nextSunday());
+  let best = base;
+  const consider = (k) => { if (k > best && k <= max) best = k; };
+  (await dbAll('attendance')).forEach((x) => { if (!x.vacation && Object.keys(x.marks || {}).length) consider(x.id); });
+  (await dbAll('evaluations')).forEach((e) => consider(e.date));
+  return best;
+}
+const levelOfLesson = (n) => LEVEL_ORDER.find((l) => n >= LEVELS[l][0] && n <= LEVELS[l][1]) || 'Moyen';
+
+function levelOf(p) {
+  if (p >= 90) return { label: 'Excellent', color: '#2F7D4F', rot: -90 };
+  if (p >= 65) return { label: 'Bon', color: '#5E9A5E', rot: -45 };
+  if (p >= 40) return { label: 'Moyen', color: '#B8901C', rot: 0 };
+  if (p >= 20) return { label: 'Fragile', color: '#D07424', rot: 45 };
+  return { label: 'En difficulté', color: '#C0392B', rot: 90 };
+}
+const NO_LEVEL = { label: 'À saisir', color: '#B5BDB7', rot: 0 };
+function pctOf(vals) {
+  const f = (vals || []).filter((v) => v !== null && v !== undefined);
+  return f.length ? Math.round(f.reduce((a, b) => a + b, 0) / (f.length * 2) * 100) : null;
+}
+function arrowChip(lv, size) {
+  const s = size || 22;
+  return '<span class="arrow" style="width:' + s + 'px;height:' + s + 'px;background:' + lv.color + '" title="' + esc(lv.label) + '">' +
+    '<svg width="' + Math.round(s * 0.62) + '" height="' + Math.round(s * 0.62) + '" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(' + lv.rot + ' 12 12)"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></g></svg></span>';
+}
+function weekNav(base, key, maxKey) {
+  const d = fromKey(key);
+  return '<div class="week-nav">' +
+    '<a class="icon-plain" href="#/' + base + '/' + addDays(key, -7) + '" aria-label="Dimanche précédent">' + I.back + '</a>' +
+    '<div class="week-label"><span class="week-day">' + esc(cap(fmtDay(d))) + '</span><span class="week-num">Semaine S' + isoWeek(d) + '</span></div>' +
+    (key < (maxKey || toKey(nextSunday()))
+      ? '<a class="icon-plain" href="#/' + base + '/' + addDays(key, 7) + '" aria-label="Dimanche suivant" style="transform:scaleX(-1)">' + I.back + '</a>'
+      : '<span class="icon-plain" aria-hidden="true"></span>') + '</div>';
+}
+const validKey = (k) => /^\d{4}-\d{2}-\d{2}$/.test(k || '') && fromKey(k).getDay() === 0;
+
+/* ---------- Données d'évaluation et de notes ---------- */
+async function evalIndex() {
+  const map = {};
+  (await dbAll('evaluations')).forEach((e) => { (map[e.sid] = map[e.sid] || []).push(e); });
+  Object.values(map).forEach((a) => a.sort((x, y) => (x.date < y.date ? -1 : 1)));
+  return map;
+}
+async function notesOf(sid) {
+  return (await dbAll('notes')).filter((n) => n.sid === sid);
+}
+async function pendingNotesCount() {
+  const c = {};
+  (await dbAll('notes')).forEach((n) => { if (!n.done) c[n.sid] = (c[n.sid] || 0) + 1; });
+  return c;
+}
+
+/* ---------- Évaluation : liste des leçons ---------- */
+pages.evaluation = async (param) => {
+  const key = validKey(param) ? param : refKey();
+  const [students, pend] = await Promise.all([getStudents(), pendingNotesCount()]);
+  const [a, b] = lessonRange(settings.level);
+  const card = (n) => {
+    const on = students.filter((s) => s.lesson === n);
+    const notes = on.reduce((t, s) => t + (pend[s.id] || 0), 0);
+    return '<a href="#/lecon/' + n + '/' + key + '" class="lesson-card">' +
+      '<div class="lesson-top"><span class="lesson-n">Leçon ' + n + '</span>' +
+      (notes ? '<span class="pill-amber">' + notes + ' note' + (notes > 1 ? 's' : '') + ' à revoir</span>' : '') +
+      '<span style="flex:1"></span><span class="row-end">' + on.length + ' élève' + (on.length > 1 ? 's' : '') + '</span>' + I.chevron + '</div>' +
+      '<span class="lesson-ar ar" lang="ar" dir="rtl">' + LESSONS[n].ar + '</span></a>';
+  };
+  let mine = '';
+  for (let n = a; n <= b; n++) mine += card(n);
+  const others = LEVEL_ORDER.filter((l) => l !== settings.level).map((l) => {
+    const [x, y] = LEVELS[l];
+    let inner = '';
+    for (let n = x; n <= y; n++) inner += card(n);
+    const cnt = students.filter((s) => s.lesson >= x && s.lesson <= y).length;
+    return '<details class="other-level"><summary>' + l + ' · leçons ' + x + ' à ' + y + (cnt ? ' · ' + cnt + ' élève' + (cnt > 1 ? 's' : '') : '') + '</summary><div class="stack">' + inner + '</div></details>';
+  }).join('');
+  return '<div class="page">' + header('Évaluation', 'Choisissez la leçon à évaluer') + weekNav('evaluation', key) +
+    (students.length ? '' : '<a href="#/eleves" class="banner info" style="text-decoration:none">Ajoutez d\u2019abord vos élèves : touchez ici.</a>') +
+    '<span class="section-label">Niveau ' + esc(settings.level) + ' · votre classe</span><div class="stack">' + mine + '</div>' +
+    '<span class="section-label">Autres niveaux</span>' + others + '</div>';
+};
+
+/* ---------- Évaluation : tableau d'une leçon ---------- */
+let lessonCtx = null;
+async function lessonRowData(s, key, n) {
+  const [sess, rec, ev, pend] = await Promise.all([getSession(key), dbGet('evaluations', key + '|' + s.id), evalIndex(), pendingNotesCount()]);
+  const mark = sess.marks[s.id];
+  const absent = mark === 'A' || mark === 'J';
+  let vals = rec ? rec.vals.slice() : [null, null, null, null];
+  let prefFrom = null;
+  if (!rec) {
+    const prev = (ev[s.id] || []).filter((e) => e.date < key && e.lesson === n && e.vals.some((v) => v !== null)).pop();
+    if (prev) { vals = prev.vals.slice(); prefFrom = prev.date; }
+  }
+  return { s, key, n, absent, mark, rec, vals, prefFrom, notes: pend[s.id] || 0 };
+}
+function lessonRowHTML(r) {
+  const p = pctOf(r.vals);
+  const lv = p === null ? NO_LEVEL : levelOf(p);
+  const allA = r.vals.every((v) => v === 2);
+  const sub = r.absent ? (r.mark === 'J' ? 'Absent justifié' : 'Absent ce dimanche') : r.prefFrom ? 'Pré-rempli' : '';
+  let under = '';
+  if (!r.absent) {
+    under = allA && r.n < 17
+      ? '<button class="mini green" data-action="next-lesson" data-sid="' + esc(r.s.id) + '">Leçon ' + (r.n + 1) + ' ›</button>'
+      : !allA ? '<button class="mini" data-action="all-a" data-sid="' + esc(r.s.id) + '" aria-label="Tout acquis pour ' + esc(r.s.name) + '">Tout A</button>' : '';
+  }
+  const cells = r.absent
+    ? '<span class="absent-cells">Pas d\u2019évaluation</span>'
+    : r.vals.map((v, i) => '<button class="cell' + (v === null ? '' : ' v' + v) + (r.prefFrom ? ' pref' : '') + '" data-action="cell" data-sid="' + esc(r.s.id) + '" data-i="' + i + '" aria-label="' + CRITERIA[i] + ' de ' + esc(r.s.name) + ' : ' + (v === null ? 'vide' : VAL[v].label) + '">' + (v === null ? '' : VAL[v].t) + '</button>').join('');
+  return '<div class="ev-row" data-row="' + esc(r.s.id) + '">' +
+    '<div class="ev-name"><span class="ev-n">' + arrowChip(lv, 18) + '<span>' + esc(r.s.name) + '</span></span>' +
+      (sub ? '<span class="att-sub">' + sub + '</span>' : '') + under + '</div>' + cells +
+    '<button class="notes-btn' + (r.notes ? ' has' : '') + '" data-action="notes-open" data-sid="' + esc(r.s.id) + '" aria-label="Notes de ' + esc(r.s.name) + '">' +
+      '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h11l3 3v13H5z"/><path d="M9 11h6"/><path d="M9 15h4"/></svg>' + (r.notes ? r.notes : '+') + '</button>' +
+  '</div>';
+}
+pages.lecon = async (n, k) => {
+  n = Math.min(17, Math.max(1, Number(n) || LEVELS[settings.level][0]));
+  const key = validKey(k) ? k : refKey();
+  lessonCtx = { n, key };
+  const students = (await getStudents()).filter((s) => s.lesson === n);
+  const rows = [];
+  for (const s of students) rows.push(await lessonRowData(s, key, n));
+  const anyPref = rows.some((r) => r.prefFrom && !r.absent);
+  return '<div class="page">' + header('Leçon ' + n, cap(fmtDay(fromKey(key))) + ' · S' + isoWeek(fromKey(key)), '#/evaluation/' + key) +
+    '<span class="ar lesson-title" lang="ar" dir="rtl">' + LESSONS[n].ar + '</span>' +
+    '<div class="legend"><span>Appuyez pour changer :</span><span style="color:#2F7D4F">A Acquis</span><span style="color:#8A6A10">EC En cours</span><span style="color:#9B2C21">NA Non acquis</span></div>' +
+    (anyPref ? '<div class="banner blue">Pré-rempli avec le cours précédent. Changez seulement ce qui a évolué.</div>' : '') +
+    (rows.length
+      ? '<div class="att-table"><div class="att-head ev-head"><span class="ev-name">Élève</span>' + CRIT_SHORT.map((c) => '<span class="ev-col">' + c + '</span>').join('') + '<span class="ev-col notes-col">Notes</span></div>' +
+        rows.map(lessonRowHTML).join('') + '</div>'
+      : '<div class="empty">Aucun élève n\u2019est sur cette leçon.<span class="hint">Un élève change de leçon avec le bouton « Leçon suivante » ou depuis Élèves.</span></div>') +
+    '<div class="sticky-foot"><p class="saved-line">✓ Enregistré automatiquement à chaque appui</p>' +
+    '<button class="btn full" data-action="finish-lesson">Terminer la leçon ' + n + '</button></div></div>';
+};
+async function refreshLessonRow(sid) {
+  if (!lessonCtx) return;
+  const el = document.querySelector('.ev-row[data-row="' + CSS.escape(sid) + '"]');
+  const s = await dbGet('students', sid);
+  if (!el || !s) return;
+  el.outerHTML = lessonRowHTML(await lessonRowData(s, lessonCtx.key, lessonCtx.n));
+}
+async function saveEval(sid, vals) {
+  const { key, n } = lessonCtx;
+  const id = key + '|' + sid;
+  const old = await dbGet('evaluations', id);
+  await dbPut('evaluations', { id, date: key, sid, lesson: n, vals, updatedAt: Date.now() });
+  if (old && key < refKey()) {
+    const s = await dbGet('students', sid);
+    const diff = vals.map((v, i) => (v !== old.vals[i] ? CRIT_SHORT[i] + ' ' + (old.vals[i] === null ? '–' : VAL[old.vals[i]].t) + ' → ' + (v === null ? '–' : VAL[v].t) : '')).filter(Boolean);
+    if (diff.length) await addHistory('Évaluation du ' + fmtShort(key) + ' · ' + (s ? s.name : 'élève') + ' : ' + diff.join(', '));
+  }
+}
+
+/* ---------- Notes « à revoir » ---------- */
+async function openNotes(sid) {
+  const s = await dbGet('students', sid);
+  if (!s) return;
+  const all = (await notesOf(sid)).sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : b.at - a.at));
+  const pending = all.filter((x) => !x.done);
+  const done = all.filter((x) => x.done).slice(0, 5);
+  const item = (x) => '<div class="note' + (x.done ? ' done' : '') + '"><div class="note-text"><span class="note-meta">' + esc(fmtShort(x.date)) + (x.lesson ? ' · leçon ' + x.lesson : '') + (x.done ? ' · traité' : '') + '</span><span>' + esc(x.text) + '</span></div>' +
+    '<div class="note-actions"><button class="mini' + (x.done ? '' : ' solid') + '" data-action="note-treat" data-id="' + esc(x.id) + '">' + (x.done ? 'Annuler' : 'Traiter') + '</button>' +
+    '<button class="mini" data-action="note-edit" data-id="' + esc(x.id) + '">Modifier</button>' +
+    '<button class="mini" data-action="note-delete" data-id="' + esc(x.id) + '" aria-label="Supprimer">' + I.corbeille + '</button></div></div>';
+  openSheet(s.name + ' · notes',
+    '<div class="row-flex"><span class="sub-label amber">À revoir</span>' + (pending.length > 1 ? '<button class="mini amber" data-action="note-treat-all" data-sid="' + esc(sid) + '">Tout traiter</button>' : '') + '</div>' +
+    (pending.length ? pending.map(item).join('') : '<p class="hint" style="margin:0">Aucun point à revoir pour le moment.</p>') +
+    (done.length ? '<span class="sub-label">Traités récemment</span>' + done.map(item).join('') : '') +
+    '<label class="field"><span class="field-label">Commentaire du jour</span><textarea id="note-new" class="input" rows="2" style="height:auto;padding:10px 12px;resize:none" maxlength="300" placeholder="Ex. : confond ض et ظ"></textarea></label>' +
+    '<button class="btn full" data-action="note-add" data-sid="' + esc(sid) + '">Ajouter le commentaire</button>');
+  notesSid = sid;
+}
+let notesSid = null;
+
+/* ---------- Comportement ---------- */
+let compOpen = null;
+const compDraft = {};
+function compState(key, sid, rec) {
+  const d = (compDraft[key] || {})[sid];
+  if (d) return d;
+  return rec ? { neg: rec.neg.slice(), pos: rec.pos.slice(), comment: rec.comment || '' } : { neg: [], pos: [], comment: '' };
+}
+function setDraft(key, sid, st) { (compDraft[key] = compDraft[key] || {})[sid] = st; }
+
+pages.comportement = async (param) => {
+  const key = validKey(param) ? param : refKey();
+  const students = await getStudents();
+  const recs = {};
+  (await dbAll('behaviour')).forEach((r) => { if (r.date === key) recs[r.sid] = r; });
+  const count = Object.values(recs).filter((r) => r.neg.length || r.pos.length).length;
+  const rows = students.map((s) => {
+    const rec = recs[s.id];
+    const st = compState(key, s.id, rec);
+    const isOpen = compOpen === s.id;
+    const nNeg = st.neg.length, nPos = st.pos.length;
+    const parts = [];
+    if (nNeg) parts.push(nNeg + ' à signaler');
+    if (nPos) parts.push(nPos + ' positif' + (nPos > 1 ? 's' : ''));
+    const dirty = (compDraft[key] || {})[s.id] !== undefined;
+    let panel = '';
+    if (isOpen) {
+      const box = (kind, i, label) => {
+        const on = st[kind].includes(i);
+        return '<button class="chk ' + kind + (on ? ' on' : '') + '" role="checkbox" aria-checked="' + on + '" data-action="comp-toggle" data-sid="' + esc(s.id) + '" data-kind="' + kind + '" data-i="' + i + '">' +
+          '<span class="box"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>' + esc(label) + '</button>';
+      };
+      panel = '<div class="comp-panel">' +
+        '<span class="sub-label red">À signaler · du plus grave au moins grave</span>' + NEG.map((l, i) => box('neg', i, l)).join('') +
+        '<span class="sub-label green">Points positifs</span>' + POS.map((l, i) => box('pos', i, l)).join('') +
+        '<label class="field" style="margin-top:6px"><span class="field-label">Commentaire</span><textarea id="comp-comment" data-sid="' + esc(s.id) + '" class="input" rows="2" maxlength="300" style="height:auto;padding:10px 12px;resize:none" placeholder="Ex. : a utilisé son téléphone malgré deux rappels">' + esc(st.comment) + '</textarea></label>' +
+        '<div class="btn-row"><button class="btn ghost" data-action="comp-clear" data-sid="' + esc(s.id) + '">Effacer</button><button class="btn" data-action="comp-validate" data-sid="' + esc(s.id) + '">Valider</button></div></div>';
+    }
+    return '<div class="comp-item" data-name="' + esc(norm(s.name)) + '">' +
+      '<button class="row comp-head' + (isOpen ? ' open' : '') + '" data-action="comp-open" data-sid="' + esc(s.id) + '" aria-expanded="' + isOpen + '">' +
+      '<span class="row-main">' + esc(s.name) + (parts.length ? '<span class="row-sub" style="font-weight:700;color:' + (nNeg ? '#9B2C21' : '#2F5D45') + '">' + parts.join(' · ') + '</span>' : '') + '</span>' +
+      (rec && !dirty ? '<span class="pill-green">Validé</span>' : dirty ? '<span class="pill-amber">Non validé</span>' : '') +
+      '<span style="display:flex;transform:rotate(' + (isOpen ? 90 : 0) + 'deg)">' + I.chevron + '</span></button>' + panel + '</div>';
+  }).join('');
+  return '<div class="page">' + header('Comportement', 'Fiche de suivi du comportement') + weekNav('comportement', key) +
+    (students.length
+      ? '<label class="search">' + I.loupe + '<input id="search-comp" type="search" placeholder="Rechercher un élève" autocomplete="off" aria-label="Rechercher un élève"></label>' +
+        '<div class="group">' + rows + '</div><p class="hint" id="no-result" hidden style="text-align:center">Aucun élève ne correspond à cette recherche.</p>'
+      : '<a href="#/eleves" class="banner info" style="text-decoration:none">Ajoutez d\u2019abord vos élèves : touchez ici.</a>') +
+    '<div class="sticky-foot"><button class="btn full" data-action="pdf-comportement" data-key="' + key + '"' + (count ? '' : ' disabled') + '>' + I.download + 'Générer la fiche PDF · ' + count + ' élève' + (count > 1 ? 's' : '') + '</button></div></div>';
+};
+
+/* ---------- Bilans ---------- */
+function periodKeys(period, ref) {
+  if (period === 'sem') return [ref];
+  if (period === 'w4') return [0, 1, 2, 3].map((i) => addDays(ref, -7 * i)).reverse();
+  if (period === 'mois') {
+    const d = fromKey(ref);
+    const keys = [];
+    let k = ref;
+    while (fromKey(k).getMonth() === d.getMonth()) { keys.unshift(k); k = addDays(k, -7); }
+    return keys;
+  }
+  return Array.from({ length: 13 }, (_, i) => addDays(ref, -7 * i)).reverse();
+}
+const PERIODS = { sem: 'Semaine', w4: '4 sem.', mois: 'Mois', tri: 'Trimestre' };
+function periodTitle(period, keys) {
+  const a = fromKey(keys[0]), b = fromKey(keys[keys.length - 1]);
+  if (period === 'sem') return 'Semaine S' + isoWeek(a);
+  if (period === 'mois') return 'Mois de ' + a.toLocaleDateString('fr-FR', { month: 'long' });
+  return (period === 'w4' ? '4 dernières semaines' : 'Trimestre') + ' · S' + isoWeek(a) + ' à S' + isoWeek(b);
+}
+
+async function studentReport(sid, period, ref) {
+  const [s, sessionsArr, ev, behav, notes] = await Promise.all([dbGet('students', sid), dbAll('attendance'), evalIndex(), dbAll('behaviour'), notesOf(sid)]);
+  const sessions = {};
+  sessionsArr.forEach((x) => { sessions[x.id] = x; });
+  const evs = {};
+  (ev[sid] || []).forEach((e) => { evs[e.date] = e; });
+  const itemFor = (k) => {
+    const ss = sessions[k];
+    if (ss && ss.vacation) return { k, type: 'V' };
+    const m = ss && ss.marks[sid];
+    if (m === 'A') return { k, type: 'ABS' };
+    if (m === 'J') return { k, type: 'J' };
+    const e = evs[k];
+    const p = e ? pctOf(e.vals) : null;
+    if (p !== null) return { k, type: 'C', pct: p, lv: levelOf(p), vals: e.vals, lesson: e.lesson, late: m === 'R' };
+    return { k, type: 'none', late: m === 'R' };
+  };
+  const keys = periodKeys(period, ref);
+  const items = keys.map(itemFor);
+  const courses = items.filter((x) => x.type === 'C');
+  const avgP = courses.length ? Math.round(courses.reduce((a, b) => a + b.pct, 0) / courses.length) : null;
+  const good = courses.filter((x) => x.pct >= 65).length;
+  const absN = items.filter((x) => x.type === 'ABS').length;
+  let trend = 'reste stable';
+  if (courses.length >= 2) {
+    const lastP = courses[courses.length - 1].pct;
+    const diff = lastP - courses[0].pct;
+    if (diff >= 10) trend = 'progresse bien';
+    else if (diff <= -10 && lastP < 65) trend = 'est en baisse';
+    else if (lastP >= 65) trend = 'garde un bon niveau';
+  }
+  const name = s ? s.name : 'L\u2019élève';
+  let phrase;
+  if (!courses.length) phrase = absN ? name + ' était absent' + ' sur cette période.' : 'Aucune évaluation sur cette période.';
+  else if (courses.length === 1) phrase = name + ' a eu un cours « ' + levelOf(courses[0].pct).label + ' » sur cette période.';
+  else phrase = name + ' ' + trend + ' : ' + good + ' bon' + (good > 1 ? 's' : '') + ' cours sur ' + courses.length + '.';
+  if (absN && courses.length) phrase += ' ' + absN + ' absence' + (absN > 1 ? 's' : '') + ' sur la période.';
+  // 5 derniers cours (hors vacances et sans données)
+  const last5 = [];
+  for (let i = 0, k = ref; i < 60 && last5.length < 5; i++, k = addDays(k, -7)) {
+    const it = itemFor(k);
+    if (it.type === 'C' || it.type === 'ABS' || it.type === 'J') last5.unshift(it);
+  }
+  const lastCourses = [];
+  for (let i = 0, k = ref; i < 60 && lastCourses.length < 4; i++, k = addDays(k, -7)) {
+    const it = itemFor(k);
+    if (it.type === 'C') lastCourses.unshift(it);
+  }
+  const start = schoolYearStartKey(ref);
+  const year = { A: 0, J: 0, R: 0 };
+  sessionsArr.forEach((x) => { if (x.id >= start && x.id <= ref && !x.vacation) { const m = x.marks[sid]; if (year[m] !== undefined) year[m]++; } });
+  const pres = { P: 0, A: 0, J: 0, R: 0 };
+  keys.forEach((k) => { const ss = sessions[k]; if (ss && !ss.vacation) { const m = ss.marks[sid]; if (pres[m] !== undefined) pres[m]++; } });
+  const behaviours = behav.filter((b) => b.sid === sid && keys.includes(b.date) && (b.neg.length || b.pos.length)).sort((a, b) => (a.date < b.date ? -1 : 1));
+  return {
+    s, period, ref, keys, items, courses, avgP, avg: avgP === null ? NO_LEVEL : levelOf(avgP), phrase, last5, lastCourses, year, pres, behaviours,
+    pending: notes.filter((n) => !n.done).sort((a, b) => (a.date < b.date ? 1 : -1))
+  };
+}
+function itemChip(it, size) {
+  if (it.type === 'C') return arrowChip(it.lv, size);
+  const map = { V: ['#CFC8B8', '#23302A', 'V'], ABS: ['#9B2C21', '#fff', 'ABS'], J: ['#2F5873', '#fff', 'J'], none: ['#ECE7DB', '#56645B', '–'] };
+  const m = map[it.type];
+  return '<span class="arrow" style="width:' + size + 'px;height:' + size + 'px;background:' + m[0] + ';color:' + m[1] + ';font-size:' + (size > 30 ? 11 : 9) + 'px;font-weight:800">' + m[2] + '</span>';
+}
+function progressBar(lesson) {
+  let html = '<div class="progress">';
+  LEVEL_ORDER.forEach((l) => {
+    const [a, b] = LEVELS[l];
+    html += '<div style="flex:' + (b - a + 1) + '" class="prog-group">';
+    for (let n = a; n <= b; n++) html += '<span class="' + (n < lesson ? 'done' : n === lesson ? 'cur' : '') + '"></span>';
+    html += '</div>';
+  });
+  return html + '</div><div class="prog-labels">' + LEVEL_ORDER.map((l) => '<span style="flex:' + (LEVELS[l][1] - LEVELS[l][0] + 1) + '">' + l + '</span>').join('') + '</div>';
+}
+
+pages.bilans = async () => {
+  const [students, ev] = await Promise.all([getStudents(), evalIndex()]);
+  const rows = students.map((s) => {
+    const last = (ev[s.id] || []).filter((e) => pctOf(e.vals) !== null).pop();
+    const lv = last ? levelOf(pctOf(last.vals)) : NO_LEVEL;
+    return '<a href="#/bilan/' + encodeURIComponent(s.id) + '/w4" class="row" data-name="' + esc(norm(s.name)) + '">' + arrowChip(lv, 26) +
+      '<span class="row-main">' + esc(s.name) + '<span class="row-sub">Leçon ' + s.lesson + ' · ' + esc(lv.label) + '</span></span>' + I.chevron + '</a>';
+  }).join('');
+  return '<div class="page">' + header('Bilans des élèves', 'Choisissez un élève') +
+    (students.length
+      ? '<label class="search">' + I.loupe + '<input id="search" type="search" placeholder="Rechercher un élève" autocomplete="off" aria-label="Rechercher un élève"></label><div class="group" id="student-list">' + rows + '</div><p class="hint" id="no-result" hidden style="text-align:center">Aucun élève ne correspond à cette recherche.</p>'
+      : '<div class="empty">Aucun élève pour l\u2019instant.<a class="btn" href="#/eleves">Ajouter des élèves</a></div>') + '</div>';
+};
+
+pages.bilan = async (sidEnc, period) => {
+  const sid = decodeURIComponent(sidEnc || '');
+  period = PERIODS[period] ? period : 'w4';
+  const r = await studentReport(sid, period, await reportRef());
+  if (!r.s) return '<div class="page">' + header('Bilan', '', '#/bilans') + '<div class="empty">Cet élève n\u2019existe plus.</div></div>';
+  const many = r.items.length > 6;
+  const tabs = Object.keys(PERIODS).map((p) => '<a role="tab" aria-selected="' + (p === period) + '" class="tab' + (p === period ? ' on' : '') + '" href="#/bilan/' + encodeURIComponent(sid) + '/' + p + '">' + PERIODS[p] + '</a>').join('');
+  const frise = r.items.map((it) => '<div class="frise-item">' + itemChip(it, many ? 22 : 40) + (many ? '' : '<span>' + esc(fmtShort(it.k)) + '</span>') + '</div>').join('');
+  const behavTxt = r.behaviours.length
+    ? r.behaviours.map((b) => esc(fmtShort(b.date)) + ' : ' + esc(b.neg.map((i) => NEG[i]).concat(b.pos.map((i) => POS[i])).join(', '))).join('<br>')
+    : 'Rien à signaler';
+  const nNeg = r.behaviours.reduce((t, b) => t + b.neg.length, 0);
+  return '<div class="page">' + header(r.s.name, 'Bilan de l\u2019élève', '#/bilans') +
+    '<div class="tabs" role="tablist" aria-label="Période">' + tabs + '</div>' +
+    '<div class="card">' +
+      '<div style="display:flex;align-items:center;gap:14px">' + arrowChip(r.avg, 56) +
+        '<div style="display:flex;flex-direction:column"><span class="sub-label" style="margin:0">' + esc(periodTitle(period, r.keys)) + '</span><span style="font-size:20px;font-weight:800">' + esc(r.avg.label) + (r.avgP !== null ? ' · ' + r.avgP + ' %' : '') + '</span></div></div>' +
+      '<div class="frise' + (many ? ' many' : '') + '">' + frise + '</div>' +
+      (many ? '<span class="hint">Du ' + esc(fmtShort(r.keys[0])) + ' au ' + esc(fmtShort(r.keys[r.keys.length - 1])) + ' · ABS = absent, J = justifié, V = vacances, – = pas de saisie</span>' : '') +
+      '<div class="banner info" style="font-size:15px">' + esc(r.phrase) + '</div></div>' +
+    '<div class="card" style="gap:10px"><div style="display:flex;align-items:baseline;gap:8px"><span class="sub-label" style="margin:0;flex:1">Avancement dans le livre</span><span style="font-weight:800">Leçon ' + r.s.lesson + ' sur 17</span></div>' +
+      progressBar(r.s.lesson) + '<span class="ar" lang="ar" dir="rtl" style="font-size:19px;text-align:right">' + LESSONS[r.s.lesson].ar + '</span></div>' +
+    '<div class="two">' +
+      '<div class="card small"><span class="sub-label" style="margin:0">Présences</span><span style="font-weight:800">' + r.pres.P + ' présent' + (r.pres.P > 1 ? 's' : '') + ' · ' + r.pres.A + ' absent' + (r.pres.A > 1 ? 's' : '') + '</span>' +
+        '<span class="hint">Cette année : ' + r.year.A + ' absence' + (r.year.A > 1 ? 's' : '') + ' non justifiée' + (r.year.A > 1 ? 's' : '') + ' · ' + r.year.J + ' justifiée' + (r.year.J > 1 ? 's' : '') + ' · ' + r.year.R + ' retard' + (r.year.R > 1 ? 's' : '') + '</span></div>' +
+      '<div class="card small"><span class="sub-label" style="margin:0">Comportement</span><span style="font-weight:800;color:' + (nNeg ? '#9B2C21' : '#2F5D45') + '">' + (r.behaviours.length ? r.behaviours.length + ' fiche' + (r.behaviours.length > 1 ? 's' : '') : 'Rien à signaler') + '</span>' +
+        (r.behaviours.length ? '<span class="hint">' + behavTxt + '</span>' : '') + '</div>' +
+    '</div>' +
+    (r.pending.length ? '<div class="card amber"><span class="sub-label amber" style="margin:0">À revoir · ' + r.pending.length + ' point' + (r.pending.length > 1 ? 's' : '') + '</span>' + r.pending.map((n) => '<span>• ' + esc(n.text) + ' <span class="hint">(' + esc(fmtShort(n.date)) + ')</span></span>').join('') + '</div>' : '') +
+    '<div class="sticky-foot"><button class="btn full" data-action="pdf-bilan" data-sid="' + esc(sid) + '" data-period="' + period + '">' + I.download + 'Générer le bilan PDF</button></div></div>';
+};
+
+/* ---------- Vue d'ensemble de la classe ---------- */
+async function classReport() {
+  const ref = await reportRef();
+  const [students, ev, sessionsArr, alerts, dismissed] = await Promise.all([getStudents(), evalIndex(), dbAll('attendance'), untreatedAlerts(), dbGet('kv', 'dismissed')]);
+  const dis = dismissed || {};
+  const keys = periodKeys('w4', ref);
+  const sessions = {};
+  sessionsArr.forEach((x) => { sessions[x.id] = x; });
+  let pres = 0, tot = 0;
+  keys.forEach((k) => { const ss = sessions[k]; if (ss && !ss.vacation) Object.values(ss.marks).forEach((m) => { tot++; if (m === 'P' || m === 'R') pres++; }); });
+  const recent = [];
+  students.forEach((s) => (ev[s.id] || []).forEach((e) => { if (keys.includes(e.date) && pctOf(e.vals) !== null) recent.push(pctOf(e.vals)); }));
+  const avgP = recent.length ? Math.round(recent.reduce((a, b) => a + b, 0) / recent.length) : null;
+  const proposals = [];
+  const watch = [];
+  const latest = {};
+  students.forEach((s) => {
+    const list = (ev[s.id] || []).filter((e) => e.date <= ref && pctOf(e.vals) !== null);
+    const last = list[list.length - 1];
+    latest[s.id] = last;
+    const lvl = levelOfLesson(s.lesson);
+    const idx = LEVEL_ORDER.indexOf(lvl);
+    const last3 = list.slice(-3), last4 = list.slice(-4);
+    if (last && s.lesson === LEVELS[lvl][1] && idx < 2 && last3.length === 3 && last3.every((e) => pctOf(e.vals) >= 65)) {
+      const id = s.id + '|up';
+      if (dis[id] !== last.date) proposals.push({ id, sid: s.id, name: s.name, to: LEVEL_ORDER[idx + 1], lesson: LEVELS[LEVEL_ORDER[idx + 1]][0], why: 'A terminé la leçon ' + s.lesson + ' (fin du niveau ' + lvl + ') avec 3 bons cours d\u2019affilée.', last: last.date });
+    }
+    if (last && idx > 0 && last4.length === 4 && last4.every((e) => pctOf(e.vals) < 40)) {
+      const id = s.id + '|down';
+      if (dis[id] !== last.date) proposals.push({ id, sid: s.id, name: s.name, to: LEVEL_ORDER[idx - 1], lesson: LEVELS[LEVEL_ORDER[idx - 1]][0], why: '4 cours d\u2019affilée en « Fragile » ou « En difficulté » sur la leçon ' + s.lesson + '.', last: last.date });
+    }
+    if (last && pctOf(last.vals) < 40) {
+      const lv = levelOf(pctOf(last.vals));
+      watch.push({ sid: s.id, name: s.name, lv, why: lv.label + ' · leçon ' + s.lesson + ' (' + fmtShort(last.date) + ')' });
+    }
+  });
+  alerts.forEach((a) => { if (!watch.some((w) => w.sid === a.id)) watch.push({ sid: a.id, name: a.name, bang: true, why: ABS_LIMIT + ' absences non justifiées cette année' }); });
+  // Répartition par leçon et difficulté
+  const lessonsUsed = new Set(students.map((s) => s.lesson));
+  const [a, b] = lessonRange(settings.level);
+  for (let n = a; n <= b; n++) lessonsUsed.add(n);
+  const dist = Array.from(lessonsUsed).sort((x, y) => x - y).map((n) => {
+    const on = students.filter((s) => s.lesson === n);
+    let nonA = 0, total = 0;
+    const crit = [0, 0, 0, 0];
+    on.forEach((s) => { const l = latest[s.id]; if (l && l.lesson === n) l.vals.forEach((v, i) => { if (v !== null) { total++; if (v !== 2) { nonA++; crit[i]++; } } }); });
+    return { n, count: on.length, share: total ? nonA / total : 0, total, crit, notA: on.filter((s) => latest[s.id] && latest[s.id].lesson === n && latest[s.id].vals.some((v) => v !== null && v !== 2)).length };
+  });
+  const hardest = dist.filter((d) => d.total).sort((x, y) => y.share - x.share)[0] || null;
+  const max = Math.max(1, ...dist.map((d) => d.count));
+  return { ref, students, presRate: tot ? Math.round(pres / tot * 100) : null, avgP, avg: avgP === null ? NO_LEVEL : levelOf(avgP), proposals, watch, dist, hardest, max };
+}
+
+pages.classe = async () => {
+  const c = await classReport();
+  const hard = c.hardest && c.hardest.share > 0 ? c.hardest : null;
+  const weakest = hard ? hard.crit.indexOf(Math.max(...hard.crit)) : -1;
+  return '<div class="page">' + header('Ma classe', 'Classe ' + settings.level + ' · 4 dernières semaines') +
+    '<div class="three">' +
+      '<div class="card small"><span class="hint">Élèves</span><span class="big-num">' + c.students.length + '</span></div>' +
+      '<div class="card small"><span class="hint">Présence</span><span class="big-num">' + (c.presRate === null ? '–' : c.presRate + ' %') + '</span></div>' +
+      '<div class="card small"><span class="hint">Niveau classe</span><span style="display:flex;align-items:center;gap:6px;font-weight:800">' + arrowChip(c.avg, 22) + esc(c.avg.label) + '</span></div>' +
+    '</div>' +
+    (c.proposals.length ? '<div class="card blue"><span class="sub-label" style="margin:0;color:#24485F">Propositions de l\u2019application</span>' +
+      c.proposals.map((p) => '<div class="prop"><b>' + esc(p.name) + ' → niveau ' + esc(p.to) + ' ?</b><span class="hint">' + esc(p.why) + '</span>' +
+        '<div class="btn-row"><button class="btn ghost" style="height:42px" data-action="prop-ignore" data-id="' + esc(p.id) + '" data-last="' + p.last + '">Ignorer</button>' +
+        '<button class="btn" style="height:42px" data-action="prop-accept" data-sid="' + esc(p.sid) + '" data-lesson="' + p.lesson + '" data-to="' + esc(p.to) + '">Passer en ' + esc(p.to) + '</button></div></div>').join('') + '</div>' : '') +
+    '<div class="card" style="gap:10px"><span class="sub-label" style="margin:0">Où en sont les élèves</span>' +
+      c.dist.map((d) => '<a href="#/lecon/' + d.n + '/' + c.ref + '" class="dist-row"><span class="dist-l">Leçon ' + d.n + '</span><span class="dist-bar"><span style="width:' + Math.round(d.count / c.max * 100) + '%;background:' + (d.share >= 0.5 ? '#D07424' : '#5E9A5E') + '"></span></span><span class="dist-c">' + d.count + ' élève' + (d.count > 1 ? 's' : '') + '</span></a>').join('') +
+      '<span class="hint">Une barre orange : beaucoup de critères encore « En cours » ou « Non acquis » sur cette leçon.</span></div>' +
+    (hard ? '<div class="card" style="gap:8px"><span class="sub-label red" style="margin:0">Leçon la plus difficile</span><div style="display:flex;align-items:baseline;gap:8px"><b style="font-size:17px">Leçon ' + hard.n + '</b><span class="ar" lang="ar" dir="rtl" style="flex:1;text-align:right;font-size:18px">' + LESSONS[hard.n].ar + '</span></div>' +
+      '<span>Critère le plus faible : <b>' + CRITERIA[weakest] + '</b>. ' + hard.notA + ' élève' + (hard.notA > 1 ? 's' : '') + ' sur ' + hard.count + ' n\u2019ont pas encore tout acquis.</span></div>' : '') +
+    '<div class="card" style="gap:4px"><span class="sub-label red" style="margin:0 0 4px">Élèves à surveiller</span>' +
+      (c.watch.length ? c.watch.map((w) => '<a href="#/bilan/' + encodeURIComponent(w.sid) + '/w4" class="row" style="padding:8px 0;border-top:1px solid var(--line-soft);border-bottom:none">' + (w.bang ? '<span class="bang" style="width:26px;height:26px">!</span>' : arrowChip(w.lv, 26)) + '<span class="row-main">' + esc(w.name) + '<span class="row-sub">' + esc(w.why) + '</span></span>' + I.chevron + '</a>').join('') : '<span class="hint">Aucun élève en difficulté pour le moment.</span>') + '</div>' +
+    '<div class="sticky-foot"><button class="btn full" data-action="pdf-classe">' + I.download + 'Générer le PDF de la classe</button></div></div>';
+};
+
+/* =========================================================
+   PDF (rendu hors ligne : html2canvas + jsPDF intégrés)
+   ========================================================= */
+function loadScript(src) {
+  return new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = src; s.onload = resolve; s.onerror = () => reject(new Error('Chargement impossible : ' + src));
+    document.head.appendChild(s);
+  });
+}
+async function loadPdfLibs() {
+  if (!window.html2canvas) {
+    try { await loadScript('lib/html2canvas.min.js'); } catch (e) { await loadScript('https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js'); }
+  }
+  if (!window.jspdf) {
+    try { await loadScript('lib/jspdf.umd.min.js'); } catch (e) { await loadScript('https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js'); }
+  }
+}
+const isMobile = () => /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+async function shareOrDownload(blob, filename, title) {
+  const file = new File([blob], filename, { type: blob.type });
+  if (isMobile() && navigator.canShare && navigator.canShare({ files: [file] })) {
+    try { await navigator.share({ files: [file], title }); return; }
+    catch (e) { if (e && e.name === 'AbortError') return; logError('Partage : ' + e.message); }
+  }
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 4000);
+}
+function pdfHeader(title, right, showLogo) {
+  return '<div class="pp-head">' +
+    (showLogo && logo ? '<img src="' + logo + '" class="pp-logo" alt="">' : '') +
+    '<div style="flex:1;display:flex;flex-direction:column"><span class="pp-kicker">Pôle Éducation' + (settings.profName ? ' · ' + esc(settings.profName) : '') + '</span><span class="pp-title">' + esc(title) + '</span></div>' +
+    '<div class="pp-right">' + right + '</div></div>';
+}
+const pdfFooter = (n, total) => '<div class="pp-foot">Document interne · généré par Pôle Éducation le ' + esc(fmtDate(Date.now())) + ' · page ' + n + '/' + total + '</div>';
+const pdfSign = (right) => '<div class="pp-sign"><div><b>Signature du professeur</b><span></span></div><div><b>' + right + '</b><span></span></div></div>';
+
+async function makePDF(pagesHTML, filename, title) {
+  toast('Création du PDF…');
+  await loadPdfLibs();
+  const host = document.createElement('div');
+  host.className = 'pp-host';
+  host.innerHTML = pagesHTML.map((p) => '<div class="pp">' + p + '</div>').join('');
+  document.body.appendChild(host);
+  try {
+    if (document.fonts && document.fonts.ready) await document.fonts.ready;
+    const pdf = new window.jspdf.jsPDF({ unit: 'mm', format: 'a4', compress: true });
+    const pages = host.querySelectorAll('.pp');
+    for (let i = 0; i < pages.length; i++) {
+      const canvas = await window.html2canvas(pages[i], { scale: 2, backgroundColor: '#ffffff', logging: false });
+      if (i > 0) pdf.addPage();
+      pdf.addImage(canvas.toDataURL('image/jpeg', 0.92), 'JPEG', 0, 0, 210, 297);
+    }
+    await shareOrDownload(pdf.output('blob'), filename, title);
+  } finally {
+    host.remove();
+  }
+}
+const fileSafe = (s) => norm(s).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+async function pdfComportement(key) {
+  const [students, recsAll] = await Promise.all([getStudents(), dbAll('behaviour')]);
+  const names = {};
+  students.forEach((s) => { names[s.id] = s.name; });
+  const recs = recsAll.filter((r) => r.date === key && names[r.sid]);
+  const negR = recs.filter((r) => r.neg.length).sort((a, b) => Math.min(...a.neg) - Math.min(...b.neg));
+  const posR = recs.filter((r) => r.pos.length);
+  const d = fromKey(key);
+  const head = pdfHeader('Fiche de suivi du comportement',
+    '<b>' + esc(cap(d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }))) + '</b><span>Semaine S' + isoWeek(d) + '</span><span>Classe ' + esc(settings.level) + '</span>', settings.logoOn.comportement);
+  const stats = '<div class="pp-stats"><div class="red"><span>Élèves signalés</span><b>' + negR.length + '</b></div><div class="green"><span>Points positifs</span><b>' + posR.length + '</b></div><div><span>Professeur</span><b style="font-size:15px">' + (settings.profName ? esc(settings.profName) : '________________') + '</b></div></div>';
+  const tableRows = (list, kind) => list.map((r) => '<tr><td><b>' + esc(names[r.sid]) + '</b></td><td>' + r[kind].map((i) => '• ' + esc((kind === 'neg' ? NEG : POS)[i])).join('<br>') + '</td><td class="muted">' + esc(r.comment || '') + '</td></tr>');
+  const negRows = tableRows(negR, 'neg');
+  const posRows = tableRows(posR, 'pos');
+  const table = (title, cls, col, rows) => '<span class="pp-sec ' + cls + '">' + title + '</span><table class="pp-table"><thead><tr><th style="width:120px">Élève</th><th style="width:250px">' + col + '</th><th>Commentaire</th></tr></thead><tbody>' + (rows.length ? rows.join('') : '<tr><td colspan="3" class="muted">Aucun</td></tr>') + '</tbody></table>';
+  // Découpe en pages : 12 lignes maximum par page.
+  const all = negRows.map((r) => ['neg', r]).concat(posRows.map((r) => ['pos', r]));
+  const chunks = [];
+  for (let i = 0; i < Math.max(1, all.length); i += 12) chunks.push(all.slice(i, i + 12));
+  const total = chunks.length;
+  const pagesHTML = chunks.map((chunk, i) => {
+    const n = chunk.filter((c) => c[0] === 'neg').map((c) => c[1]);
+    const p = chunk.filter((c) => c[0] === 'pos').map((c) => c[1]);
+    return '<div class="pp-body">' + head + (i === 0 ? stats : '') +
+      (n.length || i === 0 ? table('Comportements à signaler', 'red', 'Comportements', n) : '') +
+      (p.length || (i === total - 1 && !posR.length) ? table('Points positifs', 'green', 'Point positif', p) : '') +
+      '<div style="flex:1"></div>' + (i === total - 1 ? pdfSign('Vu par le directeur') : '') + pdfFooter(i + 1, total) + '</div>';
+  });
+  await makePDF(pagesHTML, 'fiche-comportement-' + key + '.pdf', 'Fiche de suivi du comportement');
+}
+
+async function pdfBilan(sid, period) {
+  const r = await studentReport(sid, period, await reportRef());
+  if (!r.s) return;
+  const last5 = r.last5.map((it) => '<div class="pp-c' + (it === r.last5[r.last5.length - 1] ? ' cur' : '') + '">' + itemChip(it, 40) +
+    '<b>' + (it.type === 'C' ? esc(it.lv.label) : it.type === 'J' ? 'Justifié' : 'Absent') + '</b><span>' + esc(fmtShort(it.k)) + '</span></div>').join('');
+  const crit = r.lastCourses.length
+    ? '<table class="pp-table center"><thead><tr><th style="text-align:left">Critère</th>' + r.lastCourses.map((c) => '<th>' + esc(fmtShort(c.k)) + '</th>').join('') + '</tr></thead><tbody>' +
+      CRITERIA.map((name, i) => '<tr><td style="text-align:left">' + name + '</td>' + r.lastCourses.map((c) => { const v = c.vals[i]; return '<td>' + (v === null ? '–' : '<span class="pp-v v' + v + '">' + VAL[v].t + '</span>') + '</td>'; }).join('') + '</tr>').join('') + '</tbody></table>'
+    : '<p class="muted">Pas encore d\u2019évaluation.</p>';
+  const behav = r.behaviours.length ? r.behaviours.map((b) => '<span>' + esc(fmtShort(b.date)) + ' : ' + esc(b.neg.map((i) => NEG[i]).concat(b.pos.map((i) => POS[i])).join(', ')) + '</span>').join('') : '<span class="muted">Rien à signaler</span>';
+  const notes = r.pending.length ? r.pending.slice(0, 6).map((n) => '<span>• ' + esc(n.text) + ' (' + esc(fmtShort(n.date)) + ')</span>').join('') : '<span class="muted">Aucun point en attente</span>';
+  const html = '<div class="pp-body">' +
+    pdfHeader(r.s.name, '<b>Classe ' + esc(settings.level) + '</b><span>' + esc(periodTitle(period, r.keys)) + '</span><span>' + esc(fmtShort(r.keys[0])) + ' → ' + esc(fmtShort(r.keys[r.keys.length - 1])) + '</span>', settings.logoOn.bilan) +
+    '<div class="pp-row"><div class="pp-box" style="flex:1"><span class="pp-lab">Niveau actuel</span><b class="pp-big">' + esc(levelOfLesson(r.s.lesson)) + '</b></div>' +
+      '<div class="pp-box" style="flex:2.2"><span class="pp-lab">Leçon en cours · ' + r.s.lesson + ' sur 17</span><span class="ar" lang="ar" dir="rtl" style="font-size:20px;text-align:right">' + LESSONS[r.s.lesson].ar + '</span></div></div>' +
+    '<span class="pp-sec green">Les 5 derniers cours</span><div class="pp-last">' + (last5 || '<span class="muted">Pas encore de cours.</span>') + '</div>' +
+    '<div class="pp-phrase">' + esc(r.phrase) + '</div>' +
+    '<span class="pp-sec green">Détail des critères</span>' + crit +
+    '<div class="pp-row"><div class="pp-box line" style="flex:1"><span class="pp-lab">Présences (année)</span><span>Absences non justifiées : <b>' + r.year.A + '</b></span><span>Absences justifiées : <b>' + r.year.J + '</b></span><span>Retards : <b>' + r.year.R + '</b></span></div>' +
+      '<div class="pp-box line" style="flex:1"><span class="pp-lab">Comportement (période)</span>' + behav + '</div></div>' +
+    '<div class="pp-box amber"><span class="pp-lab">Commentaires du professeur</span>' + notes + '</div>' +
+    '<div style="flex:1"></div>' + pdfSign('Vu par le responsable') + pdfFooter(1, 1) + '</div>';
+  await makePDF([html], 'bilan-' + fileSafe(r.s.name) + '-' + r.ref + '.pdf', 'Bilan de ' + r.s.name);
+}
+
+async function pdfClasse() {
+  const c = await classReport();
+  const hard = c.hardest && c.hardest.share > 0 ? c.hardest : null;
+  const weakest = hard ? hard.crit.indexOf(Math.max(...hard.crit)) : -1;
+  const html = '<div class="pp-body">' +
+    pdfHeader('Vue d\u2019ensemble de la classe', '<b>Classe ' + esc(settings.level) + '</b><span>4 dernières semaines</span><span>Au ' + esc(fmtShort(c.ref)) + '</span>', settings.logoOn.bilan) +
+    '<div class="pp-stats"><div><span>Élèves</span><b>' + c.students.length + '</b></div><div><span>Présence</span><b>' + (c.presRate === null ? '–' : c.presRate + ' %') + '</b></div><div><span>Niveau de la classe</span><b style="display:flex;align-items:center;gap:8px;font-size:17px">' + arrowChip(c.avg, 26) + esc(c.avg.label) + '</b></div></div>' +
+    '<span class="pp-sec green">Où en sont les élèves</span>' +
+    '<table class="pp-table"><thead><tr><th style="width:90px">Leçon</th><th>Élèves</th><th style="width:80px;text-align:right">Nombre</th></tr></thead><tbody>' +
+      c.dist.map((d) => '<tr><td><b>Leçon ' + d.n + '</b></td><td>' + esc(c.students.filter((s) => s.lesson === d.n).map((s) => s.name).join(', ')) + '</td><td style="text-align:right">' + d.count + '</td></tr>').join('') + '</tbody></table>' +
+    (hard ? '<div class="pp-box line"><span class="pp-lab">Leçon la plus difficile</span><span><b>Leçon ' + hard.n + '</b> · critère le plus faible : <b>' + CRITERIA[weakest] + '</b> (' + hard.notA + ' élève' + (hard.notA > 1 ? 's' : '') + ' sur ' + hard.count + ' sans tout acquis)</span></div>' : '') +
+    '<span class="pp-sec red">Élèves à surveiller</span>' +
+    (c.watch.length ? '<table class="pp-table"><tbody>' + c.watch.map((w) => '<tr><td style="width:130px"><b>' + esc(w.name) + '</b></td><td>' + esc(w.why) + '</td></tr>').join('') + '</tbody></table>' : '<p class="muted">Aucun élève en difficulté.</p>') +
+    '<div style="flex:1"></div>' + pdfSign('Vu par le responsable') + pdfFooter(1, 1) + '</div>';
+  await makePDF([html], 'classe-' + fileSafe(settings.level) + '-' + c.ref + '.pdf', 'Vue d\u2019ensemble de la classe');
+}
+
+/* =========================================================
+   Transfert d'élève et sauvegarde complète
+   ========================================================= */
+async function studentBundle(sid) {
+  const [s, att, evs, notes, behav] = await Promise.all([dbGet('students', sid), dbAll('attendance'), dbAll('evaluations'), dbAll('notes'), dbAll('behaviour')]);
+  return {
+    type: 'pole-education-transfert', version: 1, exportedAt: Date.now(), student: s,
+    attendance: att.filter((x) => x.marks[sid]).map((x) => ({ date: x.id, mark: x.marks[sid] })),
+    evaluations: evs.filter((x) => x.sid === sid), notes: notes.filter((x) => x.sid === sid), behaviour: behav.filter((x) => x.sid === sid)
+  };
+}
+async function importBundle(b) {
+  const s = b.student;
+  const exists = (await getStudents()).find((x) => norm(x.name) === norm(s.name));
+  if (exists) throw new Error('Un élève nommé « ' + s.name + ' » existe déjà dans votre classe. Renommez-le (Élèves) puis recommencez.');
+  if (await dbGet('students', s.id)) s.id = uid();
+  const sid = s.id;
+  await dbPut('students', Object.assign({}, s, { id: sid, receivedAt: Date.now() }));
+  for (const a of b.attendance || []) { const ss = await getSession(a.date); ss.marks[sid] = a.mark; await saveSession(ss); }
+  for (const e of b.evaluations || []) await dbPut('evaluations', Object.assign({}, e, { id: e.date + '|' + sid, sid }));
+  for (const n of b.notes || []) await dbPut('notes', Object.assign({}, n, { id: uid(), sid }));
+  for (const r of b.behaviour || []) await dbPut('behaviour', Object.assign({}, r, { id: r.date + '|' + sid, sid }));
+  return s;
+}
+const STORES = ['kv', 'students', 'attendance', 'evaluations', 'notes', 'behaviour', 'trash', 'history'];
+async function fullBackup() {
+  const out = { type: 'pole-education-sauvegarde', version: 1, appVersion: APP_VERSION, exportedAt: Date.now(), data: {} };
+  for (const st of STORES) {
+    if (st === 'kv') {
+      const keys = await run('kv', 'readonly', (s) => s.getAllKeys());
+      const vals = await dbAll('kv');
+      out.data.kv = keys.map((k, i) => [k, vals[i]]);
+    } else out.data[st] = await dbAll(st);
+  }
+  return out;
+}
+async function restoreBackup(b) {
+  for (const st of STORES) await run(st, 'readwrite', (s) => s.clear());
+  for (const [k, v] of b.data.kv || []) await dbPut('kv', v, k);
+  for (const st of STORES.filter((x) => x !== 'kv')) for (const row of b.data[st] || []) await dbPut(st, row);
+}
+function pickFile(accept) {
+  return new Promise((resolve) => {
+    const inp = document.createElement('input');
+    inp.type = 'file'; inp.accept = accept || '.json,application/json';
+    inp.onchange = () => resolve(inp.files && inp.files[0]);
+    inp.click();
+  });
+}
+async function readJSON(file) {
+  const text = await file.text();
+  try { return JSON.parse(text); } catch (e) { throw new Error('Ce fichier n\u2019est pas lisible par Pôle Éducation.'); }
+}
+
+/* =========================================================
+   Code PIN et guide de démarrage
+   ========================================================= */
+async function hashPin(pin) {
+  const txt = 'pole-education:' + pin;
+  if (window.crypto && crypto.subtle) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(txt));
+    return Array.from(new Uint8Array(buf)).map((b) => b.toString(16).padStart(2, '0')).join('');
+  }
+  let h = 2166136261;
+  for (let i = 0; i < txt.length; i++) { h ^= txt.charCodeAt(i); h = Math.imul(h, 16777619); }
+  return 'f' + (h >>> 0).toString(16);
+}
+let pinEntry = '';
+let pinMode = null; // 'unlock' | 'set1' | 'set2' | 'off'
+let pinFirst = '';
+let unlockResolve = null;
+function renderPin(title, sub, error) {
+  const dots = [0, 1, 2, 3].map((i) => '<span class="pin-dot' + (i < pinEntry.length ? ' on' : '') + '"></span>').join('');
+  const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', '⌫'].map((k) => k === '' ? '<span></span>' : '<button class="pin-key" data-action="pin-key" data-k="' + k + '" aria-label="' + (k === '⌫' ? 'Effacer' : k) + '">' + k + '</button>').join('');
+  $('#pin-layer').innerHTML = '<div class="pin-screen"><div class="pin-box">' +
+    '<span class="home-name" style="font-size:22px">' + esc(title) + '</span><span class="hint" style="text-align:center">' + sub + '</span>' +
+    '<div class="pin-dots">' + dots + '</div><span class="error-text" style="min-height:20px;text-align:center">' + (error || '') + '</span>' +
+    '<div class="pin-pad">' + keys + '</div>' +
+    (pinMode !== 'unlock' ? '<button class="btn ghost full" data-action="pin-cancel">Annuler</button>' : '<span class="hint" style="text-align:center;font-size:12px">Code oublié ? Il faut réinstaller l\u2019application et restaurer une sauvegarde.</span>') +
+    '</div></div>';
+}
+function askUnlock() {
+  pinMode = 'unlock'; pinEntry = '';
+  renderPin('Pôle Éducation', 'Entrez votre code à 4 chiffres');
+  return new Promise((r) => { unlockResolve = r; });
+}
+async function pinComplete() {
+  const code = pinEntry;
+  pinEntry = '';
+  if (pinMode === 'unlock') {
+    if ((await hashPin(code)) === settings.pinHash) { $('#pin-layer').innerHTML = ''; const r = unlockResolve; unlockResolve = null; if (r) r(); }
+    else renderPin('Pôle Éducation', 'Entrez votre code à 4 chiffres', 'Code incorrect, réessayez.');
+  } else if (pinMode === 'set1') {
+    pinFirst = code; pinMode = 'set2';
+    renderPin('Confirmer le code', 'Tapez le même code une seconde fois');
+  } else if (pinMode === 'set2') {
+    if (code !== pinFirst) { pinMode = 'set1'; renderPin('Choisir un code', 'Choisissez un code à 4 chiffres', 'Les deux codes sont différents. Recommencez.'); return; }
+    settings.pinHash = await hashPin(code);
+    await saveSettings();
+    await addHistory('Code PIN activé');
+    $('#pin-layer').innerHTML = '';
+    toast('Code PIN activé.');
+    route(true);
+  } else if (pinMode === 'off') {
+    if ((await hashPin(code)) !== settings.pinHash) { renderPin('Désactiver le code', 'Entrez votre code actuel', 'Code incorrect.'); return; }
+    delete settings.pinHash;
+    await saveSettings();
+    await addHistory('Code PIN désactivé');
+    $('#pin-layer').innerHTML = '';
+    toast('Code PIN désactivé.');
+    route(true);
+  }
+}
+
+const GUIDE = [
+  ['Bienvenue dans Pôle Éducation', 'L\u2019application fonctionne <b>sans internet</b>. Toutes les données restent <b>sur ce téléphone</b> : rien n\u2019est envoyé ailleurs.<br><br>Commencez par ajouter vos élèves dans <b>Élèves et transfert</b>.'],
+  ['L\u2019appel en 20 secondes', 'Touchez <b>« Tout le monde présent »</b>, puis seulement les absents (✗), les absents justifiés (J) et les retards (R).<br><br>À <b>3 absences non justifiées</b> dans l\u2019année, une alerte rouge apparaît.'],
+  ['L\u2019évaluation pendant la lecture', 'Choisissez la leçon, puis remplissez la ligne de l\u2019élève <b>juste après sa lecture</b> : chaque appui fait défiler A → EC → NA.<br><br>Les cases sont <b>pré-remplies</b> avec le cours précédent et tout est <b>enregistré automatiquement</b>.'],
+  ['PDF et sauvegarde', 'Les bilans et la fiche de comportement se créent en <b>un appui</b>, puis s\u2019envoient par WhatsApp ou e-mail.<br><br>Pensez à <b>exporter une sauvegarde</b> chaque mois (Paramètres) et à la garder hors du téléphone.']
+];
+let guideStep = 0;
+function showGuide(i) {
+  guideStep = i;
+  const [t, body] = GUIDE[i];
+  $('#pin-layer').innerHTML = '<div class="pin-screen"><div class="pin-box guide">' +
+    '<span class="guide-step">Étape ' + (i + 1) + ' sur ' + GUIDE.length + '</span>' +
+    '<span class="home-name" style="font-size:22px;text-align:left">' + t + '</span><p style="margin:0;font-size:16px;line-height:1.5">' + body + '</p>' +
+    '<div class="guide-dots">' + GUIDE.map((_, j) => '<span class="' + (j === i ? 'on' : '') + '"></span>').join('') + '</div>' +
+    '<div class="btn-row">' + (i < GUIDE.length - 1 ? '<button class="btn ghost" data-action="guide-close">Passer</button><button class="btn" data-action="guide-next">Suivant</button>' : '<button class="btn" data-action="guide-close">Commencer</button>') + '</div>' +
+    '</div></div>';
+}
+
+/* =========================================================
+   Actions des étapes 3 à 6
+   ========================================================= */
+Object.assign(actions, {
+  /* Évaluation */
+  cell: async (el) => {
+    const sid = el.dataset.sid;
+    const i = Number(el.dataset.i);
+    const s = await dbGet('students', sid);
+    const r = await lessonRowData(s, lessonCtx.key, lessonCtx.n);
+    const vals = r.vals.slice();
+    vals[i] = NEXT_VAL(vals[i]);
+    await saveEval(sid, vals);
+    await refreshLessonRow(sid);
+  },
+  'all-a': async (el) => { await saveEval(el.dataset.sid, [2, 2, 2, 2]); await refreshLessonRow(el.dataset.sid); },
+  'next-lesson': async (el) => {
+    const s = await dbGet('students', el.dataset.sid);
+    if (!s || s.lesson >= 17) return;
+    const from = s.lesson;
+    s.lesson = from + 1;
+    await dbPut('students', s);
+    await addHistory(s.name + ' passe de la leçon ' + from + ' à la leçon ' + s.lesson);
+    const lvlFrom = levelOfLesson(from), lvlTo = levelOfLesson(s.lesson);
+    toast(lvlFrom !== lvlTo ? s.name + ' a terminé le niveau ' + lvlFrom + '. Pensez à le transférer (Élèves).' : s.name + ' passe à la leçon ' + s.lesson + '.');
+    route(true);
+  },
+  'finish-lesson': async () => {
+    if (!lessonCtx) return;
+    const { key, n } = lessonCtx;
+    const students = (await getStudents()).filter((s) => s.lesson === n);
+    let saved = 0;
+    for (const s of students) {
+      const r = await lessonRowData(s, key, n);
+      if (!r.absent && !r.rec && r.prefFrom) { await dbPut('evaluations', { id: key + '|' + s.id, date: key, sid: s.id, lesson: n, vals: r.vals, updatedAt: Date.now() }); saved++; }
+    }
+    toast('Leçon ' + n + ' enregistrée' + (saved ? ' (' + saved + ' ligne' + (saved > 1 ? 's' : '') + ' pré-remplie' + (saved > 1 ? 's' : '') + ' confirmée' + (saved > 1 ? 's' : '') + ')' : '') + '.');
+    location.hash = '#/evaluation/' + key;
+  },
+  'notes-open': async (el) => { await openNotes(el.dataset.sid); },
+  'note-add': async (el) => {
+    const text = ($('#note-new').value || '').trim();
+    if (!text) { $('#note-new').focus(); return; }
+    const sid = el.dataset.sid;
+    const s = await dbGet('students', sid);
+    await dbPut('notes', { id: uid(), sid, date: lessonCtx ? lessonCtx.key : refKey(), lesson: s ? s.lesson : null, text, done: false, at: Date.now() });
+    await openNotes(sid);
+    await refreshLessonRow(sid);
+    toast('Commentaire ajouté.');
+  },
+  'note-treat': async (el) => {
+    const n = await dbGet('notes', el.dataset.id);
+    if (!n) return;
+    n.done = !n.done; n.doneAt = n.done ? Date.now() : null;
+    await dbPut('notes', n);
+    await openNotes(n.sid);
+    await refreshLessonRow(n.sid);
+  },
+  'note-treat-all': async (el) => {
+    for (const n of (await notesOf(el.dataset.sid)).filter((x) => !x.done)) { n.done = true; n.doneAt = Date.now(); await dbPut('notes', n); }
+    await openNotes(el.dataset.sid);
+    await refreshLessonRow(el.dataset.sid);
+  },
+  'note-edit': async (el) => {
+    const n = await dbGet('notes', el.dataset.id);
+    if (!n) return;
+    openSheet('Modifier le commentaire', '<textarea id="note-edit" class="input" rows="3" maxlength="300" style="height:auto;padding:10px 12px;resize:none">' + esc(n.text) + '</textarea>' +
+      '<div class="btn-row"><button class="btn ghost" data-action="note-back" data-sid="' + esc(n.sid) + '">Annuler</button><button class="btn" data-action="note-save" data-id="' + esc(n.id) + '">Enregistrer</button></div>');
+  },
+  'note-back': async (el) => { await openNotes(el.dataset.sid); },
+  'note-save': async (el) => {
+    const n = await dbGet('notes', el.dataset.id);
+    const text = ($('#note-edit').value || '').trim();
+    if (!n || !text) return;
+    if (text !== n.text) { await addHistory('Commentaire modifié : « ' + n.text + ' » → « ' + text + ' »'); n.text = text; await dbPut('notes', n); }
+    await openNotes(n.sid);
+  },
+  'note-delete': async (el) => {
+    const n = await dbGet('notes', el.dataset.id);
+    if (!n) return;
+    const s = await dbGet('students', n.sid);
+    const ok = await confirmBox('Supprimer ce commentaire ?', '« ' + esc(n.text) + ' » ira dans la corbeille.', 'Supprimer', true);
+    if (!ok) { await openNotes(n.sid); return; }
+    await toTrash('note', 'Commentaire « ' + n.text + ' » (' + (s ? s.name : 'élève') + ')', n);
+    await dbDel('notes', n.id);
+    await addHistory('Commentaire supprimé (' + (s ? s.name : 'élève') + ')');
+    await openNotes(n.sid);
+    await refreshLessonRow(n.sid);
+  },
+
+  /* Comportement */
+  'comp-open': async (el) => { compOpen = compOpen === el.dataset.sid ? null : el.dataset.sid; await route(true); },
+  'comp-toggle': async (el) => {
+    const key = currentParam() || refKey();
+    const rec = await dbGet('behaviour', key + '|' + el.dataset.sid);
+    const st = compState(key, el.dataset.sid, rec);
+    const i = Number(el.dataset.i);
+    const list = st[el.dataset.kind];
+    const pos = list.indexOf(i);
+    if (pos >= 0) list.splice(pos, 1); else list.push(i);
+    list.sort((a, b) => a - b);
+    setDraft(key, el.dataset.sid, st);
+    await route(true);
+  },
+  'comp-clear': async (el) => {
+    const key = currentParam() || refKey();
+    const sid = el.dataset.sid;
+    const rec = await dbGet('behaviour', key + '|' + sid);
+    if (rec) {
+      const s = await dbGet('students', sid);
+      const ok = await confirmBox('Effacer la fiche ?', 'La fiche de <b>' + esc(s ? s.name : 'cet élève') + '</b> du ' + esc(fmtShort(key)) + ' ira dans la corbeille.', 'Effacer', true);
+      if (!ok) return;
+      await toTrash('behaviour', 'Fiche comportement du ' + fmtShort(key) + ' (' + (s ? s.name : 'élève') + ')', rec);
+      await dbDel('behaviour', rec.id);
+      await addHistory('Fiche comportement effacée : ' + (s ? s.name : 'élève') + ', ' + fmtShort(key));
+    }
+    if (compDraft[key]) delete compDraft[key][sid];
+    await route(true);
+  },
+  'comp-validate': async (el) => {
+    const key = currentParam() || refKey();
+    const sid = el.dataset.sid;
+    const old = await dbGet('behaviour', key + '|' + sid);
+    const st = compState(key, sid, old);
+    const ta = $('#comp-comment');
+    if (ta && ta.dataset.sid === sid) st.comment = ta.value.trim();
+    if (!st.neg.length && !st.pos.length) { toast('Cochez au moins un comportement, ou touchez « Effacer ».'); return; }
+    const s = await dbGet('students', sid);
+    await dbPut('behaviour', { id: key + '|' + sid, date: key, sid, neg: st.neg, pos: st.pos, comment: st.comment, updatedAt: Date.now() });
+    await addHistory((old ? 'Fiche comportement modifiée : ' : 'Fiche comportement : ') + (s ? s.name : 'élève') + ', ' + fmtShort(key) + ' · ' + st.neg.map((i) => NEG[i]).concat(st.pos.map((i) => POS[i])).join(', '));
+    if (compDraft[key]) delete compDraft[key][sid];
+    compOpen = null;
+    toast('Fiche enregistrée.');
+    await route(true);
+  },
+  'pdf-comportement': async (el) => { await pdfComportement(el.dataset.key); },
+  'pdf-bilan': async (el) => { await pdfBilan(el.dataset.sid, el.dataset.period); },
+  'pdf-classe': async () => { await pdfClasse(); },
+
+  /* Propositions de niveau */
+  'prop-ignore': async (el) => {
+    const d = (await dbGet('kv', 'dismissed')) || {};
+    d[el.dataset.id] = el.dataset.last;
+    await dbPut('kv', d, 'dismissed');
+    route(true);
+  },
+  'prop-accept': async (el) => {
+    const s = await dbGet('students', el.dataset.sid);
+    if (!s) return;
+    const ok = await confirmBox('Passer en ' + el.dataset.to + ' ?', '<b>' + esc(s.name) + '</b> passera à la leçon ' + el.dataset.lesson + ' (niveau ' + esc(el.dataset.to) + '). Vous pourrez ensuite le transférer au professeur de ce niveau depuis Élèves.', 'Confirmer', false);
+    if (!ok) return;
+    const from = s.lesson;
+    s.lesson = Number(el.dataset.lesson);
+    await dbPut('students', s);
+    await addHistory('Changement de niveau : ' + s.name + ', leçon ' + from + ' → ' + s.lesson + ' (' + el.dataset.to + ')');
+    toast(s.name + ' passe au niveau ' + el.dataset.to + '.');
+    route(true);
+  },
+
+  /* Transfert */
+  'transfer-start': async (el) => {
+    const s = await dbGet('students', el.dataset.id);
+    if (!s) return;
+    openSheet('Transférer ' + s.name,
+      '<ol class="steps"><li>Un fichier est créé avec tout l\u2019historique de ' + esc(s.name) + ' (évaluations, présences, comportement, notes).</li><li>Envoyez-le à votre collègue, par WhatsApp ou e-mail.</li><li>Votre collègue l\u2019ouvre avec « Recevoir un élève ».</li></ol>' +
+      '<div class="banner warn">' + esc(s.name) + ' sera retiré de votre classe. Une copie reste dans la corbeille pendant ' + TRASH_DAYS + ' jours.</div>' +
+      '<button class="btn full" data-action="transfer-do" data-id="' + esc(s.id) + '">Créer et partager le fichier</button>');
+  },
+  'transfer-do': async (el) => {
+    const bundle = await studentBundle(el.dataset.id);
+    const s = bundle.student;
+    const blob = new Blob([JSON.stringify(bundle)], { type: 'application/json' });
+    await shareOrDownload(blob, 'transfert-' + fileSafe(s.name) + '.json', 'Transfert de ' + s.name);
+    await toTrash('student', 'Élève transféré : ' + s.name, s);
+    await dbDel('students', s.id);
+    await addHistory('Élève transféré à un collègue : ' + s.name);
+    closeSheet();
+    toast('Fichier de transfert créé pour ' + s.name + '.');
+    route();
+  },
+  'receive-student': async () => {
+    const f = await pickFile();
+    if (!f) return;
+    try {
+      const b = await readJSON(f);
+      if (!b || b.type !== 'pole-education-transfert' || !b.student) throw new Error('Ce fichier n\u2019est pas un fichier de transfert d\u2019élève.');
+      const s = await importBundle(b);
+      await addHistory('Élève reçu d\u2019un collègue : ' + s.name);
+      toast(s.name + ' est arrivé dans votre classe avec son historique.');
+      route();
+    } catch (e) { toast(e.message); }
+  },
+
+  /* Sauvegarde */
+  'backup-export': async () => {
+    const b = await fullBackup();
+    const blob = new Blob([JSON.stringify(b)], { type: 'application/json' });
+    await shareOrDownload(blob, 'pole-education-sauvegarde-' + toKey(new Date()) + '.json', 'Sauvegarde Pôle Éducation');
+    settings.lastBackupAt = Date.now();
+    await saveSettings();
+    await addHistory('Sauvegarde exportée');
+    toast('Sauvegarde exportée. Gardez ce fichier hors du téléphone.');
+    route(true);
+  },
+  'backup-restore': async () => {
+    const f = await pickFile();
+    if (!f) return;
+    try {
+      const b = await readJSON(f);
+      if (!b || b.type !== 'pole-education-sauvegarde' || !b.data) throw new Error('Ce fichier n\u2019est pas une sauvegarde Pôle Éducation.');
+      const n = (b.data.students || []).length;
+      const ok = await confirmBox('Restaurer cette sauvegarde ?', 'Sauvegarde du <b>' + esc(fmtDate(b.exportedAt)) + '</b> (' + n + ' élève' + (n > 1 ? 's' : '') + '). <b>Toutes les données actuelles de ce téléphone seront remplacées.</b>', 'Restaurer', true);
+      if (!ok) return;
+      await restoreBackup(b);
+      await loadSettings();
+      await addHistory('Sauvegarde restaurée (du ' + fmtDate(b.exportedAt) + ')');
+      toast('Sauvegarde restaurée.');
+      location.hash = '#/';
+      route();
+    } catch (e) { toast(e.message); }
+  },
+
+  /* Code PIN */
+  'pin-on': () => { pinMode = 'set1'; pinEntry = ''; renderPin('Choisir un code', 'Choisissez un code à 4 chiffres'); },
+  'pin-off': () => { pinMode = 'off'; pinEntry = ''; renderPin('Désactiver le code', 'Entrez votre code actuel'); },
+  'pin-cancel': () => { $('#pin-layer').innerHTML = ''; pinMode = null; pinEntry = ''; },
+  'pin-key': async (el) => {
+    const k = el.dataset.k;
+    if (k === '⌫') pinEntry = pinEntry.slice(0, -1);
+    else if (pinEntry.length < 4) pinEntry += k;
+    if (pinEntry.length === 4) { await pinComplete(); return; }
+    const title = $('#pin-layer .home-name');
+    const sub = $('#pin-layer .hint');
+    renderPin(title ? title.textContent : '', sub ? sub.textContent : '');
+  },
+
+  /* Guide */
+  'guide-open': () => showGuide(0),
+  'guide-next': () => showGuide(Math.min(GUIDE.length - 1, guideStep + 1)),
+  'guide-close': async () => { $('#pin-layer').innerHTML = ''; await dbPut('kv', true, 'guideSeen'); }
+});
+
+function currentParam() {
+  const parts = location.hash.replace(/^#\/?/, '').split('/');
+  return validKey(parts[1]) ? parts[1] : null;
+}
+
 function downloadText(filename, text) {
   const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
   const a = document.createElement('a');
@@ -814,6 +2261,29 @@ document.addEventListener('input', (ev) => {
     if (nr) nr.hidden = shown > 0;
   }
   if (ev.target.id === 'f-name') showFormError('');
+  if (ev.target.id === 'search-comp') {
+    const q = norm(ev.target.value);
+    let shown = 0;
+    document.querySelectorAll('.comp-item[data-name]').forEach((r) => { const ok = !q || r.dataset.name.indexOf(q) !== -1; r.hidden = !ok; if (ok) shown++; });
+    const nr = $('#no-result'); if (nr) nr.hidden = shown > 0;
+  }
+  if (ev.target.id === 'comp-comment') {
+    const key = currentParam() || refKey();
+    const sid = ev.target.dataset.sid;
+    const val = ev.target.value;
+    dbGet('behaviour', key + '|' + sid).then((rec) => { const st = compState(key, sid, rec); st.comment = val; setDraft(key, sid, st); });
+  }
+  if (ev.target.id === 'search-appel') {
+    const q = norm(ev.target.value);
+    let shown = 0;
+    document.querySelectorAll('.att-row[data-name]').forEach((r) => {
+      const ok = !q || r.dataset.name.indexOf(q) !== -1;
+      r.hidden = !ok;
+      if (ok) shown++;
+    });
+    const nr = $('#no-result');
+    if (nr) nr.hidden = shown > 0;
+  }
 });
 
 document.addEventListener('change', async (ev) => {
@@ -867,7 +2337,9 @@ document.addEventListener('change', async (ev) => {
   if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
     navigator.serviceWorker.register('sw.js').catch((e) => logError('Mode hors ligne : ' + e.message));
   }
-  route();
+  if (settings.pinHash) await askUnlock();
+  await route();
+  try { if (!(await dbGet('kv', 'guideSeen'))) showGuide(0); } catch (e) { logError('Guide : ' + e.message); }
 })();
 </script>
 </body>

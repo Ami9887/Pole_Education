@@ -1,5 +1,5 @@
 /* Pôle Éducation — service worker : rend l'application disponible sans internet. */
-const VERSION = 'pole-education-v1.0.0';
+const VERSION = 'pole-education-v2.0.0';
 const FILES = [
   './',
   './index.html',
@@ -11,7 +11,9 @@ const FILES = [
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-maskable-512.png',
-  './icons/apple-touch-icon.png'
+  './icons/apple-touch-icon.png',
+  './lib/html2canvas.min.js',
+  './lib/jspdf.umd.min.js'
 ];
 
 self.addEventListener('install', (event) => {

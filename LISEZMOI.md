@@ -1,4 +1,4 @@
-# Pôle Éducation — version 1.0.0 (étape 1 : fondations)
+# Pôle Éducation — version 2.0.0 (application complète)
 
 Application de suivi des élèves (Qâ'ida Nourâniyya). Fonctionne sans internet une fois installée.
 Toutes les données restent sur l'appareil du professeur.
@@ -9,6 +9,7 @@ Toutes les données restent sur l'appareil du professeur.
 - `sw.js` : le fonctionnement hors ligne
 - `manifest.webmanifest` : l'installation sur l'écran d'accueil
 - `fonts/` : les polices (Nunito, Amiri) intégrées pour le hors ligne
+- `lib/` : les outils de création des PDF, intégrés pour le hors ligne
 - `icons/` : les icônes de l'application
 
 ## Mettre l'application en ligne gratuitement (GitHub Pages)
@@ -17,7 +18,7 @@ Toutes les données restent sur l'appareil du professeur.
 2. Cliquez sur **New repository**, nommez-le `pole-education`, laissez-le **Public**, puis **Create repository**.
    (Seul le code est public : aucune donnée d'élève n'est envoyée sur GitHub.)
 3. Cliquez sur **uploading an existing file** et glissez **le contenu** de ce dossier
-   (index.html, sw.js, manifest.webmanifest, et les dossiers fonts et icons), puis **Commit changes**.
+   (index.html, sw.js, manifest.webmanifest, et les dossiers fonts, icons et lib), puis **Commit changes**.
 4. Allez dans **Settings › Pages**. Dans **Source**, choisissez **Deploy from a branch**,
    branche **main**, dossier **/ (root)**, puis **Save**.
 5. Après 1 à 2 minutes, l'adresse s'affiche : `https://VOTRE-PSEUDO.github.io/pole-education/`
@@ -26,7 +27,8 @@ Toutes les données restent sur l'appareil du professeur.
 
 ## Mettre à jour l'application plus tard
 
-1. Remplacez les fichiers sur GitHub par les nouveaux.
+1. Sur GitHub : **Add file › Upload files**, glissez tout le contenu du dossier
+   (les fichiers existants sont remplacés), puis **Commit changes**.
 2. Les téléphones récupèrent la mise à jour à la prochaine ouverture avec internet.
    Les données des élèves ne sont pas touchées.
 
