@@ -1,0 +1,874 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2F5D45">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Pôle Éducation">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" href="icons/icon-192.png">
+<title>Pôle Éducation</title>
+<style>
+@font-face { font-family: 'Nunito'; font-weight: 400; font-display: swap; src: url('fonts/nunito-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Nunito'; font-weight: 700; font-display: swap; src: url('fonts/nunito-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Nunito'; font-weight: 800; font-display: swap; src: url('fonts/nunito-latin-800-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Amiri'; font-weight: 400; font-display: swap; src: url('fonts/amiri-arabic-400-normal.woff2') format('woff2'); }
+
+:root {
+  --bg: #F6F3EC;
+  --surface: #FFFDF8;
+  --line: #E2DDD0;
+  --line-soft: #ECE7DB;
+  --green: #2F5D45;
+  --green-mid: #3F7A58;
+  --green-soft: #8DB59A;
+  --tint: #E3EEE5;
+  --text: #23302A;
+  --muted: #56645B;
+  --red: #C0392B;
+  --red-text: #9B2C21;
+  --red-bg: #FCEDEA;
+  --red-line: #F0C9C3;
+  --amber-bg: #FFF4D9;
+  --amber-text: #7A5A10;
+  --radius: 16px;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+*, *::before, *::after { box-sizing: inherit; }
+html { scroll-padding-top: env(safe-area-inset-top, 0px); -webkit-text-size-adjust: 100%; }
+html, body { margin: 0; background: var(--bg); color: var(--text); }
+body { font-family: 'Nunito', 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 16px; line-height: 1.4; -webkit-tap-highlight-color: transparent; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+a { color: var(--green); }
+:focus-visible { outline: 3px solid #F2C94C; outline-offset: 2px; }
+.ar { font-family: 'Amiri', 'Geeza Pro', 'Noto Naskh Arabic', 'Traditional Arabic', serif; }
+
+#app { max-width: 560px; margin: 0 auto; min-height: 100vh; display: flex; flex-direction: column; }
+.page { flex: 1; padding: 20px 20px 32px; display: flex; flex-direction: column; gap: 12px; }
+
+/* En-tête des pages internes */
+.top { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+.back { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--green); text-decoration: none; flex-shrink: 0; }
+.top-text { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.top-title { font-size: 22px; font-weight: 800; color: var(--green); }
+.top-sub { font-size: 13px; color: var(--muted); }
+
+/* Accueil */
+.home-head { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 8px 0 4px; text-align: center; }
+.logo-btn { width: 72px; height: 72px; border-radius: 50%; border: 1.5px dashed #6E9C7C; background: var(--surface); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: var(--green); text-decoration: none; font-size: 10px; font-weight: 800; overflow: hidden; }
+.logo-btn.has-logo { border: 1px solid var(--line); }
+.logo-btn img { width: 100%; height: 100%; object-fit: cover; }
+.home-name { font-size: 24px; font-weight: 800; color: var(--green); margin: 4px 0 0; }
+.home-ar { font-size: 20px; color: var(--green-mid); }
+.home-meta { font-size: 14px; color: var(--muted); }
+
+.section-label { font-size: 13px; font-weight: 800; color: #4E6B58; margin-top: 8px; }
+
+.big { display: flex; align-items: center; gap: 14px; min-height: 68px; padding: 10px 16px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); color: var(--text); text-decoration: none; }
+.big.main { background: var(--green); border-color: var(--green); color: #fff; }
+.big-icon { width: 38px; height: 38px; border-radius: 50%; background: var(--tint); color: var(--green); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.big.main .big-icon { background: #fff; }
+.big-text { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.big-title { font-size: 18px; font-weight: 800; }
+.big-sub { font-size: 13px; color: var(--muted); }
+.big.main .big-sub { color: #DCEBE0; }
+.badge-alert { height: 26px; min-width: 26px; padding: 0 9px; border-radius: 13px; background: var(--red); color: #fff; font-weight: 800; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+
+.group { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.row { width: 100%; display: flex; align-items: center; gap: 12px; min-height: 54px; padding: 8px 16px; border: none; border-bottom: 1px solid var(--line-soft); background: transparent; color: var(--text); text-decoration: none; text-align: left; font-size: 16px; font-weight: 700; }
+.row:last-child { border-bottom: none; }
+.row-main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.row-sub { font-size: 13px; font-weight: 400; color: var(--muted); }
+.row-end { font-size: 13px; font-weight: 700; color: var(--muted); }
+.row .ico { color: var(--green-mid); display: flex; }
+.row.disabled { color: #8A948D; }
+.row.disabled .ico { color: #A9B1AB; }
+.tag-soon { font-size: 12px; font-weight: 800; color: var(--muted); background: var(--line-soft); padding: 3px 8px; border-radius: 10px; white-space: nowrap; }
+
+.foot { display: flex; gap: 10px; margin-top: auto; padding-top: 16px; }
+.foot a { flex: 1; height: 48px; border-radius: 12px; border: 1px solid var(--line); color: var(--green); font-weight: 700; font-size: 15px; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; }
+
+/* Boutons */
+.btn { height: 50px; padding: 0 18px; border-radius: 14px; border: none; background: var(--green); color: #fff; font-size: 16px; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; }
+.btn.light { background: var(--tint); color: var(--green); border: 1.5px solid var(--green); }
+.btn.ghost { background: transparent; color: #3E4A43; border: 1px solid #CFC8B8; font-weight: 700; }
+.btn.danger { background: var(--red); }
+.btn.danger-soft { background: var(--red-bg); color: var(--red-text); border: 1px solid var(--red-line); }
+.btn[disabled] { opacity: 0.5; cursor: default; }
+.btn.full { width: 100%; }
+.btn-row { display: flex; gap: 8px; }
+.btn-row .btn { flex: 1; padding: 0 10px; white-space: nowrap; font-size: 15px; }
+
+/* Champs */
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field-label { font-size: 14px; font-weight: 800; color: var(--green); }
+.input, .select { height: 48px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg); padding: 0 12px; font-size: 16px; }
+.search { display: flex; align-items: center; gap: 10px; height: 48px; padding: 0 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; color: var(--muted); }
+.search input { flex: 1; border: none; outline: none; background: transparent; font-size: 16px; color: var(--text); min-width: 0; }
+.hint { font-size: 13px; color: var(--muted); }
+.error-text { font-size: 14px; font-weight: 700; color: var(--red-text); }
+
+.banner { padding: 12px 14px; border-radius: 12px; font-size: 14px; font-weight: 700; line-height: 1.45; }
+.banner.info { background: var(--tint); color: var(--green); }
+.banner.warn { background: var(--amber-bg); color: #5C4510; }
+.banner.err { background: var(--red-bg); color: var(--red-text); }
+
+.avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--tint); color: var(--green); font-size: 15px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.empty { padding: 28px 16px; text-align: center; color: var(--muted); display: flex; flex-direction: column; gap: 12px; align-items: center; }
+
+.check { display: flex; align-items: center; gap: 12px; min-height: 48px; font-size: 16px; }
+.check input { width: 22px; height: 22px; accent-color: var(--green); }
+
+.logo-preview { width: 140px; height: 140px; border-radius: 24px; border: 2px dashed var(--green-soft); background: var(--bg); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; color: #4E6B58; font-size: 13px; font-weight: 700; overflow: hidden; align-self: center; }
+.logo-preview.has-logo { border: 1px solid var(--line); }
+.logo-preview img { width: 100%; height: 100%; object-fit: cover; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 14px; }
+
+.mono { font-family: ui-monospace, 'Cascadia Mono', Menlo, Consolas, monospace; font-size: 12px; line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
+.kv { display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; font-size: 14px; }
+.kv span:nth-child(odd) { color: var(--muted); }
+.kv span:nth-child(even) { font-weight: 800; text-align: right; }
+
+/* Fenêtre du bas (sheet) */
+.overlay { position: fixed; inset: 0; background: rgba(35, 48, 42, 0.45); display: flex; flex-direction: column; justify-content: flex-end; z-index: 20; }
+.sheet { width: 100%; max-width: 560px; margin: 0 auto; background: var(--surface); border-radius: 22px 22px 0 0; padding: 18px 20px calc(24px + env(safe-area-inset-bottom, 0px)); display: flex; flex-direction: column; gap: 14px; max-height: 88vh; overflow-y: auto; }
+.sheet-head { display: flex; align-items: center; gap: 8px; }
+.sheet-title { font-size: 19px; font-weight: 800; color: var(--green); flex: 1; }
+.icon-btn { width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg); color: #3E4A43; display: flex; align-items: center; justify-content: center; }
+
+.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(24px + env(safe-area-inset-bottom, 0px)); max-width: min(92vw, 520px); background: var(--text); color: #fff; padding: 12px 18px; border-radius: 14px; font-size: 15px; font-weight: 700; z-index: 30; box-shadow: 0 6px 20px rgba(35, 48, 42, 0.25); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .sheet { animation: up 0.18s ease-out; }
+  @keyframes up { from { transform: translateY(24px); opacity: 0.6; } to { transform: none; opacity: 1; } }
+}
+</style>
+</head>
+<body>
+<div id="app"><div class="page"><p class="hint">Chargement…</p></div></div>
+<div id="layer"></div>
+
+<script>
+'use strict';
+
+/* =========================================================
+   Pôle Éducation — version 1.0.0, étape 1 (fondations)
+   Toutes les données restent sur cet appareil (IndexedDB).
+   ========================================================= */
+
+const APP_VERSION = '1.0.0 · étape 1';
+const TRASH_DAYS = 90;
+
+const LEVELS = {
+  'Débutant': [1, 3],
+  'Moyen': [4, 9],
+  'Avancé': [10, 17]
+};
+
+const LESSONS = {
+  1: { fr: 'Lettres isolées', ar: 'الحروف الهجائية المفردة' },
+  2: { fr: 'Lettres composées', ar: 'الحروف الهجائية المركبة' },
+  3: { fr: 'Lettres séparées', ar: 'الحروف المقطعة' },
+  4: { fr: 'Voyelles courtes', ar: 'الحركات' },
+  5: { fr: 'Tanwîn', ar: 'التنوين' },
+  6: { fr: 'Exercices voyelles et tanwîn', ar: 'تمرينات على الحركات والتنوين' },
+  7: { fr: 'Petit alif, yâ et wâw', ar: 'الألف الصغيرة والياء الصغيرة والواو الصغيرة' },
+  8: { fr: 'Madd et lîn', ar: 'حروف المد واللين' },
+  9: { fr: 'Exercices sur le madd', ar: 'تمرينات على المد' },
+  10: { fr: 'Soukoun', ar: 'السكون' },
+  11: { fr: 'Exercices sur le soukoun', ar: 'تمرينات على السكون' },
+  12: { fr: 'Chadda', ar: 'الشدة' },
+  13: { fr: 'Chadda avec tanwîn', ar: 'الشدة مع التنوين' },
+  14: { fr: 'Chadda suivie du soukoun', ar: 'الشدة مع السكون' },
+  15: { fr: 'Madd obligatoire et permis', ar: 'المد الواجب والجائز' },
+  16: { fr: 'Lâm solaire et lâm lunaire', ar: 'اللام الشمسية واللام القمرية' },
+  17: { fr: 'Lettres écrites non prononcées', ar: 'الحروف التي تكتب ولا تنطق' }
+};
+
+/* ---------- Icônes (SVG) ---------- */
+const I = {
+  back: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>',
+  chevron: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#56645B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>',
+  close: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12"/><path d="M18 6L6 18"/></svg>',
+  plus: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>',
+  appel: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M9 12.5l2 2 4-4"/></svg>',
+  livre: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5c3-1 6-1 9 1v14c-3-2-6-2-9-1z"/><path d="M21 5c-3-1-6-1-9 1v14c3-2 6-2 9-1z"/></svg>',
+  drapeau: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4L17 12H5"/></svg>',
+  courbe: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M5 16l4-4 3 3 6-6"/><path d="M14 9h4v4"/></svg>',
+  grille: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>',
+  eleves: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-5 6-5s6 1.7 6 5"/><circle cx="17" cy="9" r="2.5"/><path d="M16.5 14.5c2.8 0 4.5 1.8 4.5 4.5"/></svg>',
+  reglages: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h9"/><path d="M18 7h2"/><path d="M4 17h4"/><path d="M13 17h7"/><circle cx="15.5" cy="7" r="2.5"/><circle cx="10.5" cy="17" r="2.5"/></svg>',
+  aide: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.5V14"/><path d="M12 17h.01"/></svg>',
+  loupe: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg>',
+  image: '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 9"/></svg>',
+  upload: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4"/><path d="M7 9l5-5 5 5"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>',
+  download: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M4 19h16"/></svg>',
+  transfert: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h14l-3-3"/><path d="M20 16H6l3 3"/></svg>',
+  corbeille: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M9 7V4h6v3"/><path d="M6 7l1 13h10l1-13"/></svg>',
+  points: '<svg width="20" height="20" viewBox="0 0 24 24" fill="#56645B"><circle cx="12" cy="5.5" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="12" cy="18.5" r="1.7"/></svg>'
+};
+
+/* ---------- Outils ---------- */
+const $ = (sel) => document.querySelector(sel);
+const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+const norm = (s) => String(s).trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+const cleanName = (s) => cap(String(s).trim().replace(/\s+/g, ' '));
+
+function isoWeek(date) {
+  const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+  const day = d.getUTCDay() || 7;
+  d.setUTCDate(d.getUTCDate() + 4 - day);
+  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+  return Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
+}
+function nextSunday(from) {
+  const d = new Date(from || Date.now());
+  d.setHours(12, 0, 0, 0);
+  d.setDate(d.getDate() + ((7 - d.getDay()) % 7));
+  return d;
+}
+const fmtDay = (d) => d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
+const fmtDateTime = (t) => new Date(t).toLocaleString('fr-FR', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+const fmtDate = (t) => new Date(t).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+
+/* ---------- Base de données locale (IndexedDB) ---------- */
+const DB_NAME = 'pole-education';
+const DB_VERSION = 1;
+let db = null;
+
+function openDB() {
+  return new Promise((resolve, reject) => {
+    if (!('indexedDB' in window)) { reject(new Error('Stockage indisponible sur ce navigateur')); return; }
+    const req = indexedDB.open(DB_NAME, DB_VERSION);
+    req.onupgradeneeded = () => {
+      const d = req.result;
+      // Les magasins des étapes suivantes sont créés dès maintenant pour éviter toute migration.
+      if (!d.objectStoreNames.contains('kv')) d.createObjectStore('kv');
+      ['students', 'attendance', 'evaluations', 'notes', 'behaviour', 'trash'].forEach((name) => {
+        if (!d.objectStoreNames.contains(name)) d.createObjectStore(name, { keyPath: 'id' });
+      });
+      ['history', 'log'].forEach((name) => {
+        if (!d.objectStoreNames.contains(name)) d.createObjectStore(name, { keyPath: 'id', autoIncrement: true });
+      });
+    };
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+    req.onblocked = () => reject(new Error('Base bloquée : fermez les autres onglets de l\u2019application'));
+  });
+}
+function run(store, mode, fn) {
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(store, mode);
+    const st = tx.objectStore(store);
+    let result;
+    const r = fn(st);
+    if (r) r.onsuccess = () => { result = r.result; };
+    tx.oncomplete = () => resolve(result);
+    tx.onerror = () => reject(tx.error);
+    tx.onabort = () => reject(tx.error || new Error('Enregistrement annulé'));
+  });
+}
+const dbGet = (store, key) => run(store, 'readonly', (s) => s.get(key));
+const dbAll = (store) => run(store, 'readonly', (s) => s.getAll());
+const dbPut = (store, value, key) => run(store, 'readwrite', (s) => (key === undefined ? s.put(value) : s.put(value, key)));
+const dbDel = (store, key) => run(store, 'readwrite', (s) => s.delete(key));
+
+/* ---------- Journal des erreurs et historique ---------- */
+async function logError(message) {
+  try { if (db) await dbPut('log', { at: Date.now(), msg: String(message).slice(0, 500) }); } catch (e) { /* rien à faire */ }
+}
+window.addEventListener('error', (e) => { logError((e.message || 'Erreur') + (e.filename ? ' · ' + e.filename.split('/').pop() + ':' + e.lineno : '')); });
+window.addEventListener('unhandledrejection', (e) => { logError('Promesse : ' + ((e.reason && e.reason.message) || e.reason)); });
+
+async function addHistory(what) {
+  try { await dbPut('history', { at: Date.now(), what }); } catch (e) { logError('Historique : ' + e.message); }
+}
+
+/* ---------- Réglages ---------- */
+const DEFAULT_SETTINGS = { profName: '', level: 'Moyen', logoOn: { home: true, bilan: true, comportement: true } };
+let settings = { ...DEFAULT_SETTINGS };
+let logo = null;
+
+async function loadSettings() {
+  const s = await dbGet('kv', 'settings');
+  settings = Object.assign({}, DEFAULT_SETTINGS, s || {});
+  settings.logoOn = Object.assign({}, DEFAULT_SETTINGS.logoOn, (s && s.logoOn) || {});
+  logo = (await dbGet('kv', 'logo')) || null;
+}
+async function saveSettings() { await dbPut('kv', settings, 'settings'); }
+
+/* ---------- Élèves ---------- */
+async function getStudents() {
+  const all = await dbAll('students');
+  return all.sort((a, b) => a.name.localeCompare(b.name, 'fr'));
+}
+function lessonRange(level) { return LEVELS[level] || LEVELS.Moyen; }
+function lessonOptions(selected, level) {
+  let html = '';
+  for (let n = 1; n <= 17; n++) {
+    const [a, b] = lessonRange(level || settings.level);
+    const tag = n >= a && n <= b ? '' : ' (autre niveau)';
+    html += '<option value="' + n + '"' + (n === Number(selected) ? ' selected' : '') + '>Leçon ' + n + ' · ' + esc(LESSONS[n].fr) + tag + '</option>';
+  }
+  return html;
+}
+
+/* ---------- Corbeille ---------- */
+async function toTrash(kind, label, data) {
+  await dbPut('trash', { id: uid(), kind, label, data, at: Date.now() });
+}
+async function purgeTrash() {
+  const limit = Date.now() - TRASH_DAYS * 86400000;
+  const items = await dbAll('trash');
+  for (const it of items) if (it.at < limit) await dbDel('trash', it.id);
+}
+
+/* ---------- Interface : fenêtre du bas, confirmation, message ---------- */
+function openSheet(title, body) {
+  $('#layer').innerHTML =
+    '<div class="overlay" data-action="close-sheet-bg"><div class="sheet" role="dialog" aria-modal="true" aria-label="' + esc(title) + '">' +
+    '<div class="sheet-head"><span class="sheet-title">' + esc(title) + '</span>' +
+    '<button class="icon-btn" data-action="close-sheet" aria-label="Fermer">' + I.close + '</button></div>' +
+    body + '</div></div>';
+  const first = $('#layer .sheet input, #layer .sheet select');
+  if (first && first.dataset.autofocus !== undefined) first.focus();
+}
+function closeSheet() { $('#layer').innerHTML = ''; }
+
+function confirmBox(title, message, okLabel, danger) {
+  return new Promise((resolve) => {
+    openSheet(title,
+      '<p style="margin:0;font-size:16px;line-height:1.45">' + message + '</p>' +
+      '<div class="btn-row"><button class="btn ghost" data-action="confirm-no">Annuler</button>' +
+      '<button class="btn ' + (danger ? 'danger' : '') + '" data-action="confirm-yes">' + esc(okLabel) + '</button></div>');
+    confirmResolver = (v) => { closeSheet(); resolve(v); };
+  });
+}
+let confirmResolver = null;
+
+let toastTimer = null;
+function toast(msg) {
+  let el = $('.toast');
+  if (!el) { el = document.createElement('div'); el.className = 'toast'; el.setAttribute('role', 'status'); document.body.appendChild(el); }
+  el.textContent = msg;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.remove(), 2800);
+}
+
+function header(title, sub, backTo) {
+  return '<div class="top"><a class="back" href="' + (backTo || '#/') + '" aria-label="Retour">' + I.back + '</a>' +
+    '<div class="top-text"><span class="top-title">' + esc(title) + '</span>' + (sub ? '<span class="top-sub">' + esc(sub) + '</span>' : '') + '</div></div>';
+}
+
+/* =========================================================
+   Pages
+   ========================================================= */
+const pages = {};
+
+pages.home = async () => {
+  const students = await getStudents();
+  const next = nextSunday();
+  const today = new Date().getDay() === 0;
+  const when = (today ? 'aujourd\u2019hui' : fmtDay(next)) + ' · S' + isoWeek(next);
+  const showLogo = logo && settings.logoOn.home;
+  return '<div class="page">' +
+    '<div class="home-head">' +
+      '<a href="#/logo" class="logo-btn' + (showLogo ? ' has-logo' : '') + '" aria-label="' + (showLogo ? 'Logo de l\u2019établissement' : 'Ajouter le logo de l\u2019établissement') + '">' +
+        (showLogo ? '<img src="' + logo + '" alt="">' : I.plus + '<span>LOGO</span>') + '</a>' +
+      '<h1 class="home-name">Pôle Éducation</h1>' +
+      '<span class="home-ar ar" lang="ar" dir="rtl">القاعدة النورانية</span>' +
+      '<span class="home-meta">Classe ' + esc(settings.level) + ' · ' + esc(cap(when)) + '</span>' +
+    '</div>' +
+    (students.length === 0
+      ? '<a href="#/eleves" class="banner info" style="text-decoration:none">Commencez par ajouter vos élèves : touchez ici.</a>'
+      : '') +
+    '<span class="section-label">Pendant le cours</span>' +
+    '<a href="#/bientot/appel" class="big main"><span class="big-icon">' + I.appel + '</span><span class="big-text"><span class="big-title">Appel</span><span class="big-sub">Présent, absent, justifié, retard</span></span></a>' +
+    '<a href="#/bientot/evaluation" class="big"><span class="big-icon">' + I.livre + '</span><span class="big-text"><span class="big-title">Évaluation</span><span class="big-sub">4 critères par élève</span></span>' + I.chevron + '</a>' +
+    '<a href="#/bientot/comportement" class="big"><span class="big-icon">' + I.drapeau + '</span><span class="big-text"><span class="big-title">Comportement</span><span class="big-sub">Fiche de suivi du comportement</span></span>' + I.chevron + '</a>' +
+    '<span class="section-label">Suivi</span>' +
+    '<div class="group">' +
+      '<a href="#/bientot/bilans" class="row"><span class="ico">' + I.courbe + '</span><span class="row-main">Bilans des élèves</span></a>' +
+      '<a href="#/bientot/classe" class="row"><span class="ico">' + I.grille + '</span><span class="row-main">Vue d\u2019ensemble de la classe</span></a>' +
+      '<a href="#/eleves" class="row"><span class="ico">' + I.eleves + '</span><span class="row-main">Élèves et transfert</span><span class="row-end">' + students.length + '</span></a>' +
+    '</div>' +
+    '<div class="foot"><a href="#/parametres">' + I.reglages + 'Paramètres</a><a href="#/aide">' + I.aide + 'Aide</a></div>' +
+  '</div>';
+};
+
+const SOON = {
+  appel: ['Appel', 2], evaluation: ['Évaluation', 3], comportement: ['Comportement', 4],
+  bilans: ['Bilans des élèves', 5], classe: ['Vue d\u2019ensemble de la classe', 5]
+};
+pages.bientot = async (key) => {
+  const s = SOON[key] || ['Cette partie', 2];
+  return '<div class="page">' + header(s[0]) +
+    '<div class="empty"><span style="font-size:17px;font-weight:800;color:var(--text)">Bientôt disponible</span>' +
+    '<span>Cette partie arrive à l\u2019étape ' + s[1] + ' du développement.</span>' +
+    '<a class="btn" href="#/">Retour à l\u2019accueil</a></div></div>';
+};
+
+/* ----- Élèves ----- */
+pages.eleves = async () => {
+  const students = await getStudents();
+  const rows = students.map((s) =>
+    '<button class="row" data-action="student-menu" data-id="' + esc(s.id) + '" data-name="' + esc(norm(s.name)) + '">' +
+      '<span class="avatar">' + esc(s.name.charAt(0).toUpperCase()) + '</span>' +
+      '<span class="row-main">' + esc(s.name) + '</span>' +
+      '<span class="row-end">Leçon ' + s.lesson + '</span>' + I.points +
+    '</button>').join('');
+  return '<div class="page">' + header('Élèves', 'Classe ' + settings.level + ' · ' + students.length + ' élève' + (students.length > 1 ? 's' : '')) +
+    '<div class="btn-row">' +
+      '<button class="btn" data-action="add-student-open">' + I.plus + 'Ajouter</button>' +
+      '<button class="btn light" data-action="soon" data-step="6">' + I.download + 'Recevoir un élève</button>' +
+    '</div>' +
+    (students.length
+      ? '<label class="search">' + I.loupe + '<input id="search" type="search" placeholder="Rechercher un élève" autocomplete="off" aria-label="Rechercher un élève"></label>' +
+        '<div class="group" id="student-list">' + rows + '</div>' +
+        '<p class="hint" id="no-result" hidden style="text-align:center">Aucun élève ne correspond à cette recherche.</p>'
+      : '<div class="empty"><span style="font-size:17px;font-weight:800;color:var(--text)">Aucun élève pour l\u2019instant</span><span>Ajoutez les élèves de votre classe un par un avec le bouton « Ajouter ».</span></div>') +
+    '<p class="hint" style="text-align:center">Les élèves supprimés restent ' + TRASH_DAYS + ' jours dans Paramètres › Corbeille.</p>' +
+  '</div>';
+};
+
+function studentForm(s) {
+  const [a] = lessonRange(settings.level);
+  return '<label class="field"><span class="field-label">Prénom de l\u2019élève</span>' +
+      '<input id="f-name" class="input" type="text" maxlength="40" autocomplete="off" value="' + esc(s ? s.name : '') + '" placeholder="Ex. : Bilal" data-autofocus></label>' +
+    '<label class="field"><span class="field-label">' + (s ? 'Leçon en cours' : 'Leçon de départ') + '</span>' +
+      '<select id="f-lesson" class="select">' + lessonOptions(s ? s.lesson : a) + '</select></label>' +
+    '<p class="hint" style="margin:0">Deux élèves avec le même prénom ? Ajoutez l\u2019initiale du nom : « Yassine B. »</p>' +
+    '<p class="error-text" id="f-error" hidden></p>';
+}
+
+async function validateName(name, exceptId) {
+  if (!name) return 'Écrivez le prénom de l\u2019élève.';
+  const all = await getStudents();
+  if (all.some((x) => x.id !== exceptId && norm(x.name) === norm(name))) return 'Ce prénom existe déjà. Ajoutez l\u2019initiale du nom, par exemple « ' + name + ' B. ».';
+  return '';
+}
+function showFormError(msg) { const el = $('#f-error'); if (el) { el.textContent = msg; el.hidden = !msg; } }
+
+/* ----- Logo ----- */
+pages.logo = async () => {
+  const on = settings.logoOn;
+  return '<div class="page">' + header('Logo de l\u2019établissement', 'Paramètres', '#/parametres') +
+    '<div class="card">' +
+      '<div class="logo-preview' + (logo ? ' has-logo' : '') + '">' + (logo ? '<img src="' + logo + '" alt="Logo actuel">' : I.image + '<span>Aucun logo</span>') + '</div>' +
+      '<button class="btn full" data-action="logo-pick">' + I.upload + (logo ? 'Changer le logo' : 'Importer un logo') + '</button>' +
+      '<input id="logo-file" type="file" accept="image/png,image/jpeg,image/webp" hidden>' +
+      '<span class="hint" style="text-align:center">Depuis vos photos ou vos fichiers · PNG ou JPG</span>' +
+      (logo ? '<button class="btn danger-soft full" data-action="logo-remove">Retirer le logo</button>' : '') +
+    '</div>' +
+    '<div class="card" style="gap:4px"><span class="field-label">Afficher le logo sur</span>' +
+      '<label class="check"><input type="checkbox" data-logo-on="home"' + (on.home ? ' checked' : '') + '>L\u2019écran d\u2019accueil</label>' +
+      '<label class="check"><input type="checkbox" data-logo-on="bilan"' + (on.bilan ? ' checked' : '') + '>Les bilans PDF des élèves</label>' +
+      '<label class="check"><input type="checkbox" data-logo-on="comportement"' + (on.comportement ? ' checked' : '') + '>La fiche de suivi du comportement</label>' +
+    '</div>' +
+    '<p class="hint">Le logo est recadré en carré et enregistré sur ce téléphone. Il fonctionne sans internet.</p>' +
+  '</div>';
+};
+
+function readLogo(file) {
+  return new Promise((resolve, reject) => {
+    if (!file || !/^image\//.test(file.type)) { reject(new Error('Choisissez une image PNG ou JPG.')); return; }
+    const url = URL.createObjectURL(file);
+    const img = new Image();
+    img.onload = () => {
+      const size = 512;
+      const side = Math.min(img.naturalWidth, img.naturalHeight);
+      const sx = (img.naturalWidth - side) / 2;
+      const sy = (img.naturalHeight - side) / 2;
+      const c = document.createElement('canvas');
+      c.width = size; c.height = size;
+      const ctx = c.getContext('2d');
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, size, size);
+      ctx.drawImage(img, sx, sy, side, side, 0, 0, size, size);
+      URL.revokeObjectURL(url);
+      resolve(c.toDataURL('image/png'));
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('Cette image ne peut pas être lue. Essayez un autre fichier.')); };
+    img.src = url;
+  });
+}
+
+/* ----- Paramètres ----- */
+pages.parametres = async () => {
+  const trash = await dbAll('trash');
+  const persisted = navigator.storage && navigator.storage.persisted ? await navigator.storage.persisted() : false;
+  const soon = (label, sub, step) =>
+    '<button class="row disabled" data-action="soon" data-step="' + step + '"><span class="row-main">' + label + (sub ? '<span class="row-sub">' + sub + '</span>' : '') + '</span><span class="tag-soon">Étape ' + step + '</span></button>';
+  const levels = Object.keys(LEVELS).map((l) => '<option' + (l === settings.level ? ' selected' : '') + '>' + l + '</option>').join('');
+  return '<div class="page">' + header('Paramètres') +
+    '<span class="section-label">Ma classe</span>' +
+    '<div class="group">' +
+      '<a href="#/logo" class="row"><span class="row-main">Logo de l\u2019établissement</span><span class="row-end">' + (logo ? 'Ajouté' : 'Aucun') + '</span>' + I.chevron + '</a>' +
+      '<label class="row"><span class="row-main">Nom du professeur<span class="row-sub">Affiché sur les PDF</span></span>' +
+        '<input class="input" style="width:150px;height:40px;text-align:right" data-setting="profName" maxlength="40" value="' + esc(settings.profName) + '" placeholder="Votre nom"></label>' +
+      '<label class="row"><span class="row-main">Niveau de la classe</span>' +
+        '<select class="select" style="height:40px;font-weight:700" data-setting="level">' + levels + '</select></label>' +
+    '</div>' +
+    '<span class="section-label">Calendrier</span>' +
+    '<div class="group">' + soon('Semaines de vacances', '', 2) + '</div>' +
+    '<span class="section-label">Sécurité et données</span>' +
+    '<div class="group">' +
+      '<div class="row"><span class="row-main">Sauvegarde automatique<span class="row-sub" style="color:var(--green);font-weight:700">Activée : chaque saisie est enregistrée sur cet appareil</span></span></div>' +
+      '<div class="row"><span class="row-main">Stockage protégé<span class="row-sub">' + (persisted ? 'Oui : le navigateur ne videra pas les données' : 'Non confirmé : installez l\u2019application sur l\u2019écran d\u2019accueil') + '</span></span></div>' +
+      soon('Code PIN', 'Demande un code à l\u2019ouverture', 6) +
+      soon('Exporter une sauvegarde', 'Fichier à garder hors du téléphone', 6) +
+      soon('Restaurer une sauvegarde', '', 6) +
+    '</div>' +
+    '<div class="group">' +
+      '<a href="#/corbeille" class="row"><span class="row-main">Corbeille</span><span class="row-end">' + trash.length + ' élément' + (trash.length > 1 ? 's' : '') + '</span>' + I.chevron + '</a>' +
+      '<a href="#/historique" class="row"><span class="row-main">Historique des modifications</span>' + I.chevron + '</a>' +
+    '</div>' +
+    '<span class="section-label">Aide</span>' +
+    '<div class="group">' +
+      soon('Guide de démarrage', '', 6) +
+      '<a href="#/aide" class="row"><span class="row-main">Installer sur iPhone / Android</span>' + I.chevron + '</a>' +
+      '<a href="#/diagnostic" class="row"><span class="row-main">Diagnostic</span><span class="row-end">v' + esc(APP_VERSION) + '</span>' + I.chevron + '</a>' +
+    '</div>' +
+  '</div>';
+};
+
+/* ----- Corbeille ----- */
+pages.corbeille = async () => {
+  const items = (await dbAll('trash')).sort((a, b) => b.at - a.at);
+  const list = items.map((t) => {
+    const left = Math.max(0, TRASH_DAYS - Math.floor((Date.now() - t.at) / 86400000));
+    return '<div class="row" style="flex-wrap:wrap">' +
+      '<span class="row-main">' + esc(t.label) + '<span class="row-sub">Supprimé le ' + esc(fmtDate(t.at)) + ' · encore ' + left + ' jours</span></span>' +
+      '<div class="btn-row" style="width:100%">' +
+        '<button class="btn ghost" style="height:40px;font-size:14px" data-action="trash-delete" data-id="' + esc(t.id) + '">Supprimer définitivement</button>' +
+        '<button class="btn" style="height:40px;font-size:14px" data-action="trash-restore" data-id="' + esc(t.id) + '">Restaurer</button>' +
+      '</div></div>';
+  }).join('');
+  return '<div class="page">' + header('Corbeille', 'Les éléments restent ' + TRASH_DAYS + ' jours', '#/parametres') +
+    (items.length ? '<div class="group">' + list + '</div>' : '<div class="empty">La corbeille est vide.</div>') + '</div>';
+};
+
+/* ----- Historique ----- */
+pages.historique = async () => {
+  const items = (await dbAll('history')).sort((a, b) => b.at - a.at).slice(0, 300);
+  const list = items.map((h) =>
+    '<div class="row" style="align-items:flex-start;font-weight:400;font-size:15px"><span style="width:96px;flex-shrink:0;font-size:12px;font-weight:700;color:var(--muted);padding-top:2px">' + esc(fmtDateTime(h.at)) + '</span><span>' + esc(h.what) + '</span></div>').join('');
+  return '<div class="page">' + header('Historique des modifications', '', '#/parametres') +
+    (items.length ? '<div class="group">' + list + '</div>' : '<div class="empty">Aucune modification pour l\u2019instant.</div>') + '</div>';
+};
+
+/* ----- Diagnostic ----- */
+pages.diagnostic = async () => {
+  const [students, logs] = await Promise.all([dbAll('students'), dbAll('log')]);
+  let usage = '—';
+  try {
+    if (navigator.storage && navigator.storage.estimate) {
+      const e = await navigator.storage.estimate();
+      usage = (e.usage / 1048576).toFixed(1).replace('.', ',') + ' Mo';
+    }
+  } catch (e) { /* ignoré */ }
+  const persisted = navigator.storage && navigator.storage.persisted ? await navigator.storage.persisted() : false;
+  const standalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  const sw = 'serviceWorker' in navigator && navigator.serviceWorker.controller ? 'Actif' : 'Inactif';
+  const last = logs.sort((a, b) => b.at - a.at).slice(0, 50);
+  return '<div class="page">' + header('Diagnostic', '', '#/parametres') +
+    '<div class="card"><div class="kv">' +
+      '<span>Version</span><span>' + esc(APP_VERSION) + '</span>' +
+      '<span>Appareil</span><span>' + esc(deviceLabel()) + '</span>' +
+      '<span>Installée sur l\u2019écran d\u2019accueil</span><span>' + (standalone ? 'Oui' : 'Non') + '</span>' +
+      '<span>Mode hors ligne</span><span>' + sw + '</span>' +
+      '<span>Stockage protégé</span><span>' + (persisted ? 'Oui' : 'Non') + '</span>' +
+      '<span>Données</span><span>' + students.length + ' élèves · ' + usage + '</span>' +
+    '</div></div>' +
+    '<span class="section-label">Journal des erreurs</span>' +
+    '<div class="card"><div class="mono">' + (last.length ? last.map((l) => esc(fmtDateTime(l.at) + ' · ' + l.msg)).join('\n') : 'Aucune erreur enregistrée.') + '</div></div>' +
+    '<button class="btn full" data-action="export-log">' + I.download + 'Exporter le journal</button>' +
+    (last.length ? '<button class="btn ghost full" data-action="clear-log">Vider le journal</button>' : '') +
+  '</div>';
+};
+function deviceLabel() {
+  const ua = navigator.userAgent;
+  const os = /iPhone|iPad|iPod/.test(ua) ? 'iPhone / iPad' : /Android/.test(ua) ? 'Android' : /Windows/.test(ua) ? 'Windows' : /Mac/.test(ua) ? 'Mac' : 'Autre';
+  const br = /Edg\//.test(ua) ? 'Edge' : /CriOS|Chrome\//.test(ua) ? 'Chrome' : /FxiOS|Firefox\//.test(ua) ? 'Firefox' : /Safari\//.test(ua) ? 'Safari' : 'Navigateur';
+  return os + ' · ' + br;
+}
+
+/* ----- Aide à l'installation ----- */
+let installPrompt = null;
+window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); installPrompt = e; if (location.hash === '#/aide') route(); });
+
+pages.aide = async () => {
+  const standalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  return '<div class="page">' + header('Installer l\u2019application', 'Pour l\u2019utiliser sans internet') +
+    (standalone ? '<div class="banner info">L\u2019application est déjà installée sur cet appareil.</div>' : '') +
+    (installPrompt ? '<button class="btn full" data-action="install">' + I.download + 'Installer maintenant</button>' : '') +
+    '<div class="card"><span class="field-label">Sur iPhone (Safari)</span>' +
+      '<ol style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px">' +
+      '<li>Ouvrez l\u2019adresse de l\u2019application dans <b>Safari</b>.</li>' +
+      '<li>Touchez le bouton <b>Partager</b> (carré avec une flèche vers le haut).</li>' +
+      '<li>Choisissez <b>« Sur l\u2019écran d\u2019accueil »</b>, puis <b>Ajouter</b>.</li>' +
+      '<li>Ouvrez toujours l\u2019application depuis cette icône : c\u2019est indispensable pour garder vos données.</li></ol></div>' +
+    '<div class="card"><span class="field-label">Sur Android (Chrome)</span>' +
+      '<ol style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px">' +
+      '<li>Ouvrez l\u2019adresse de l\u2019application dans <b>Chrome</b>.</li>' +
+      '<li>Touchez le menu <b>⋮</b> en haut à droite.</li>' +
+      '<li>Choisissez <b>« Installer l\u2019application »</b> ou <b>« Ajouter à l\u2019écran d\u2019accueil »</b>.</li></ol></div>' +
+    '<div class="card"><span class="field-label">Sur PC (Chrome ou Edge)</span>' +
+      '<p style="margin:0">Cliquez sur l\u2019icône d\u2019installation à droite de la barre d\u2019adresse, puis sur <b>Installer</b>.</p></div>' +
+    '<p class="hint">Une fois installée, l\u2019application fonctionne sans Wi-Fi. Vos données restent uniquement sur cet appareil.</p>' +
+  '</div>';
+};
+
+/* =========================================================
+   Navigation
+   ========================================================= */
+async function route() {
+  const hash = location.hash.replace(/^#\/?/, '');
+  const [name, param] = hash.split('/');
+  const page = pages[name || 'home'] || pages.home;
+  closeSheet();
+  try {
+    $('#app').innerHTML = await page(param);
+  } catch (e) {
+    logError('Affichage ' + (name || 'accueil') + ' : ' + e.message);
+    $('#app').innerHTML = '<div class="page">' + header('Erreur') + '<div class="banner err">Cette page n\u2019a pas pu s\u2019afficher. Le problème est noté dans Paramètres › Diagnostic.</div><a class="btn" href="#/">Retour à l\u2019accueil</a></div>';
+  }
+  window.scrollTo(0, 0);
+}
+window.addEventListener('hashchange', route);
+
+/* =========================================================
+   Actions
+   ========================================================= */
+const actions = {
+  'close-sheet': closeSheet,
+  'close-sheet-bg': (el, ev) => { if (ev.target === el) { if (confirmResolver) { const r = confirmResolver; confirmResolver = null; r(false); } else closeSheet(); } },
+  'confirm-yes': () => { const r = confirmResolver; confirmResolver = null; if (r) r(true); },
+  'confirm-no': () => { const r = confirmResolver; confirmResolver = null; if (r) r(false); },
+  soon: (el) => toast('Disponible à l\u2019étape ' + el.dataset.step + ' du développement.'),
+
+  'add-student-open': () => {
+    openSheet('Ajouter un élève', studentForm(null) + '<button class="btn full" data-action="add-student">Ajouter l\u2019élève</button>');
+  },
+  'add-student': async () => {
+    const name = cleanName($('#f-name').value);
+    const lesson = Number($('#f-lesson').value);
+    const err = await validateName(name);
+    if (err) { showFormError(err); return; }
+    await dbPut('students', { id: uid(), name, lesson, createdAt: Date.now() });
+    await addHistory('Élève ajouté : ' + name + ' (leçon ' + lesson + ')');
+    closeSheet();
+    toast(name + ' a été ajouté.');
+    route();
+  },
+  'student-menu': async (el) => {
+    const s = await dbGet('students', el.dataset.id);
+    if (!s) return;
+    openSheet(s.name,
+      studentForm(s) +
+      '<button class="btn full" data-action="edit-student" data-id="' + esc(s.id) + '">Enregistrer les changements</button>' +
+      '<div class="group">' +
+        '<button class="row disabled" data-action="soon" data-step="5"><span class="ico">' + I.courbe + '</span><span class="row-main">Voir le bilan</span><span class="tag-soon">Étape 5</span></button>' +
+        '<button class="row disabled" data-action="soon" data-step="6"><span class="ico">' + I.transfert + '</span><span class="row-main">Transférer à un collègue</span><span class="tag-soon">Étape 6</span></button>' +
+      '</div>' +
+      '<button class="btn danger-soft full" data-action="delete-student" data-id="' + esc(s.id) + '">' + I.corbeille + 'Supprimer l\u2019élève</button>');
+  },
+  'edit-student': async (el) => {
+    const s = await dbGet('students', el.dataset.id);
+    if (!s) return;
+    const name = cleanName($('#f-name').value);
+    const lesson = Number($('#f-lesson').value);
+    const err = await validateName(name, s.id);
+    if (err) { showFormError(err); return; }
+    const changes = [];
+    if (name !== s.name) changes.push('prénom « ' + s.name + ' » → « ' + name + ' »');
+    if (lesson !== s.lesson) changes.push('leçon ' + s.lesson + ' → ' + lesson);
+    if (!changes.length) { closeSheet(); return; }
+    await dbPut('students', Object.assign({}, s, { name, lesson }));
+    await addHistory('Élève modifié (' + s.name + ') : ' + changes.join(', '));
+    closeSheet();
+    toast('Changements enregistrés.');
+    route();
+  },
+  'delete-student': async (el) => {
+    const s = await dbGet('students', el.dataset.id);
+    if (!s) return;
+    const ok = await confirmBox('Supprimer ' + s.name + ' ?', 'Êtes-vous sûr de vouloir supprimer <b>' + esc(s.name) + '</b> ? Il ira dans la corbeille, d\u2019où vous pourrez le récupérer pendant ' + TRASH_DAYS + ' jours.', 'Supprimer', true);
+    if (!ok) return;
+    await toTrash('student', 'Élève : ' + s.name, s);
+    await dbDel('students', s.id);
+    await addHistory('Élève supprimé : ' + s.name + ' (placé dans la corbeille)');
+    toast(s.name + ' a été placé dans la corbeille.');
+    route();
+  },
+
+  'trash-restore': async (el) => {
+    const t = await dbGet('trash', el.dataset.id);
+    if (!t) return;
+    if (t.kind === 'student') {
+      const err = await validateName(t.data.name);
+      if (err) { toast('Un élève nommé ' + t.data.name + ' existe déjà. Renommez-le avant de restaurer.'); return; }
+      await dbPut('students', t.data);
+    }
+    await dbDel('trash', t.id);
+    await addHistory('Restauré depuis la corbeille : ' + t.label);
+    toast('Restauré : ' + t.label);
+    route();
+  },
+  'trash-delete': async (el) => {
+    const t = await dbGet('trash', el.dataset.id);
+    if (!t) return;
+    const ok = await confirmBox('Supprimer définitivement ?', '<b>' + esc(t.label) + '</b> sera effacé pour toujours. Cette action ne peut pas être annulée.', 'Supprimer définitivement', true);
+    if (!ok) return;
+    await dbDel('trash', t.id);
+    await addHistory('Supprimé définitivement : ' + t.label);
+    toast('Élément supprimé définitivement.');
+    route();
+  },
+
+  'logo-pick': () => { const f = $('#logo-file'); if (f) f.click(); },
+  'logo-remove': async () => {
+    const ok = await confirmBox('Retirer le logo ?', 'Le logo ne sera plus affiché sur l\u2019accueil ni sur les PDF. Vous pourrez en importer un autre à tout moment.', 'Retirer', true);
+    if (!ok) return;
+    await dbDel('kv', 'logo');
+    logo = null;
+    await addHistory('Logo retiré');
+    toast('Logo retiré.');
+    route();
+  },
+
+  install: async () => {
+    if (!installPrompt) return;
+    installPrompt.prompt();
+    const choice = await installPrompt.userChoice;
+    installPrompt = null;
+    if (choice && choice.outcome === 'accepted') toast('Application installée.');
+    route();
+  },
+  'export-log': async () => {
+    const logs = (await dbAll('log')).sort((a, b) => a.at - b.at);
+    const text = 'Pôle Éducation — journal\nVersion : ' + APP_VERSION + '\nAppareil : ' + deviceLabel() + '\nNavigateur : ' + navigator.userAgent + '\nExporté le : ' + new Date().toLocaleString('fr-FR') + '\n\n' +
+      (logs.length ? logs.map((l) => new Date(l.at).toLocaleString('fr-FR') + ' · ' + l.msg).join('\n') : 'Aucune erreur enregistrée.');
+    downloadText('pole-education-journal.txt', text);
+  },
+  'clear-log': async () => {
+    const ok = await confirmBox('Vider le journal ?', 'Les erreurs enregistrées seront effacées.', 'Vider', true);
+    if (!ok) return;
+    await run('log', 'readwrite', (s) => s.clear());
+    route();
+  }
+};
+
+function downloadText(filename, text) {
+  const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+}
+
+/* Délégation des événements */
+document.addEventListener('click', async (ev) => {
+  const el = ev.target.closest('[data-action]');
+  if (!el) return;
+  const fn = actions[el.dataset.action];
+  if (!fn) return;
+  if (el.tagName === 'A') ev.preventDefault();
+  try { await fn(el, ev); }
+  catch (e) {
+    logError('Action ' + el.dataset.action + ' : ' + e.message);
+    toast('Une erreur est survenue. Elle est notée dans Paramètres › Diagnostic.');
+  }
+});
+
+document.addEventListener('keydown', (ev) => {
+  if (ev.key === 'Escape' && $('#layer .overlay')) {
+    if (confirmResolver) { const r = confirmResolver; confirmResolver = null; r(false); } else closeSheet();
+  }
+  if (ev.key === 'Enter' && ev.target.id === 'f-name') {
+    const btn = $('#layer [data-action="add-student"], #layer [data-action="edit-student"]');
+    if (btn) btn.click();
+  }
+});
+
+document.addEventListener('input', (ev) => {
+  if (ev.target.id === 'search') {
+    const q = norm(ev.target.value);
+    let shown = 0;
+    document.querySelectorAll('#student-list [data-name]').forEach((r) => {
+      const ok = !q || r.dataset.name.indexOf(q) !== -1;
+      r.hidden = !ok;
+      if (ok) shown++;
+    });
+    const nr = $('#no-result');
+    if (nr) nr.hidden = shown > 0;
+  }
+  if (ev.target.id === 'f-name') showFormError('');
+});
+
+document.addEventListener('change', async (ev) => {
+  const t = ev.target;
+  try {
+    if (t.dataset.setting) {
+      const key = t.dataset.setting;
+      const old = settings[key];
+      settings[key] = t.value.trim();
+      if (old === settings[key]) return;
+      await saveSettings();
+      await addHistory((key === 'level' ? 'Niveau de la classe' : 'Nom du professeur') + ' : « ' + (old || 'vide') + ' » → « ' + (settings[key] || 'vide') + ' »');
+      toast('Enregistré.');
+    } else if (t.dataset.logoOn) {
+      settings.logoOn[t.dataset.logoOn] = t.checked;
+      await saveSettings();
+      toast('Enregistré.');
+    } else if (t.id === 'logo-file') {
+      const file = t.files && t.files[0];
+      if (!file) return;
+      try {
+        logo = await readLogo(file);
+        await dbPut('kv', logo, 'logo');
+        await addHistory('Logo importé');
+        toast('Logo enregistré.');
+        route();
+      } catch (e) { toast(e.message); }
+    }
+  } catch (e) {
+    logError('Enregistrement : ' + e.message);
+    toast('L\u2019enregistrement a échoué. Le problème est noté dans Paramètres › Diagnostic.');
+  }
+});
+
+/* =========================================================
+   Démarrage
+   ========================================================= */
+(async function start() {
+  try {
+    db = await openDB();
+    await loadSettings();
+    await purgeTrash();
+  } catch (e) {
+    $('#app').innerHTML = '<div class="page"><h1 class="home-name">Pôle Éducation</h1>' +
+      '<div class="banner err">Impossible d\u2019ouvrir le stockage de l\u2019application : ' + esc(e.message) + '.<br>Vérifiez que vous n\u2019êtes pas en navigation privée, puis rouvrez l\u2019application.</div></div>';
+    return;
+  }
+  // Demande au navigateur de ne jamais effacer les données de l'application.
+  try { if (navigator.storage && navigator.storage.persist) await navigator.storage.persist(); } catch (e) { logError('Stockage protégé : ' + e.message); }
+  // Fonctionnement hors ligne (uniquement quand l'application est servie en https ou en local).
+  if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
+    navigator.serviceWorker.register('sw.js').catch((e) => logError('Mode hors ligne : ' + e.message));
+  }
+  route();
+})();
+</script>
+</body>
+</html>
